@@ -70,3 +70,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "rubocop", "~> 1.24"
+
+gem "rails_best_practices", "~> 1.22"
+
+gem "brakeman", "~> 5.2"
