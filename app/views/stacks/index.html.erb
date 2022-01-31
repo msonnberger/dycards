@@ -1,0 +1,8 @@
+<h1>Stacks</h1>
+
+<% @stacks.each do |stack| %>
+  <div>
+    <h2><%= stack.title %></h2>
+    <h3><%= stack.flashcards.count %> <span>Karten</span></h3>
+  </div>
+<% end %>
