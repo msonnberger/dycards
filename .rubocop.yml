@@ -1,0 +1,16 @@
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
+
+# Override Setting
+AllCops:
+  TargetRubyVersion: 3.0
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  
+Style/FrozenStringLiteralComment:
+  Enabled: false

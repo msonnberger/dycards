@@ -81,3 +81,5 @@ gem "webpacker", "~> 5.4"
 gem "sprockets-rails", "~> 3.4"
 
 gem "bcrypt", "~> 3.1"
+
+gem "rubocop-rails_config", "~> 1.8"
