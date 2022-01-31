@@ -20,8 +20,7 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  def login_params
-    params.permit(:username, :password)
-  end
+    def login_params
+      params.permit(:username, :password)
+    end
 end

@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def signup_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
-  end
+    def signup_params
+      params.require(:user).permit(:username, :password, :password_confirmation)
+    end
 end

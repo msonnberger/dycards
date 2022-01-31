@@ -17,9 +17,8 @@ class FlashcardsController < ApplicationController
   def endscreen
     @flashcard = Flashcard.find(params[:id])
     stack = @flashcard.stack
-    #all = stack.flashcards
     total_count = stack.flashcards.count.to_f
-    @percentages = Hash.new
+    @percentages = {}
     @percentages['open_answer'] = OpenAnswer.where(stack_id: stack.id).count / total_count
     @percentages['multiple_choice'] = MultipleChoice.where(stack_id: stack.id).count / total_count
     @percentages['single_choice'] = SingleChoice.where(stack_id: stack.id).count / total_count
