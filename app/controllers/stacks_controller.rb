@@ -5,6 +5,11 @@ class StacksController < ApplicationController
     @stacks = current_user.stacks
   end
 
+  def show
+    @stack = Stack.find(params[:id])
+    @flashcards = @stack.flashcards
+  end
+
   def new
   end
 

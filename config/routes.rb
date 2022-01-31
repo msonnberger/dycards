@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :stacks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -12,4 +11,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   #resources :users, only: [:show, :edit, :update, :destroy]
+
+  resources :stacks do
+    resources :flashcards
+  end
 end
