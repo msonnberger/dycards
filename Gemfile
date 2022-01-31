@@ -7,7 +7,6 @@ ruby "3.0.2"
 gem "rails", "~> 7.0.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -76,3 +75,7 @@ gem "rubocop", "~> 1.24"
 gem "rails_best_practices", "~> 1.22"
 
 gem "brakeman", "~> 5.2"
+
+gem "webpacker", "~> 5.4"
+
+gem "sprockets-rails", "~> 3.4"
