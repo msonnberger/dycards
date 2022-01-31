@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   #resources :users, only: [:show, :edit, :update, :destroy]
 
-  resources :stacks do
-    resources :flashcards
-  end
+  resources :stacks
+  resources :flashcards
 end

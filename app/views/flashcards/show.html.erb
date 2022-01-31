@@ -1,2 +1,5 @@
-<h1>Flashcards#show</h1>
-<p>Find me in app/views/flashcards/show.html.erb</p>
+<h1><%= @flashcard.stack.title %></h1>
+<h2><%= @flashcard.question %></h2>
+<% if @flashcard.next %>
+  <%= link_to 'Next', flashcard_path(@flashcard.next) %>
+<% end %>

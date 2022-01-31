@@ -11,6 +11,7 @@ class FlashcardsController < ApplicationController
   end
 
   def show
+    @flashcard = Flashcard.find(params[:id])
   end
 
   def edit
