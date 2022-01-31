@@ -2,4 +2,6 @@
 <h2><%= @flashcard.question %></h2>
 <% if @flashcard.next %>
   <%= link_to 'Next', flashcard_path(@flashcard.next) %>
+<% else %>
+  <%= link_to 'Next', action: 'endscreen' %>
 <% end %>
