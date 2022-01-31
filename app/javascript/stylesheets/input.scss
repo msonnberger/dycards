@@ -1,0 +1,16 @@
+input {
+  border: 3px solid var(--indigo-300);
+  border-radius: 1.5rem;
+  max-width: 20rem;
+  padding: 0.8rem 1.2rem;
+  margin: 1rem 0 0.5rem 0;
+
+  &:focus {
+    outline: none;
+    border-color: var(--indigo-500);
+  }
+}
+
+label {
+  margin-left: 1rem;
+}
