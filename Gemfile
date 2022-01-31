@@ -79,3 +79,5 @@ gem "brakeman", "~> 5.2"
 gem "webpacker", "~> 5.4"
 
 gem "sprockets-rails", "~> 3.4"
+
+gem "bcrypt", "~> 3.1"
