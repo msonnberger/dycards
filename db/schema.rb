@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_130221) do
+ActiveRecord::Schema.define(version: 2022_02_01_085254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "completed_flashcards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "flashcard_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["flashcard_id"], name: "index_completed_flashcards_on_flashcard_id"
+    t.index ["user_id"], name: "index_completed_flashcards_on_user_id"
+  end
 
   create_table "flashcards", force: :cascade do |t|
     t.string "question"
@@ -51,6 +60,8 @@ ActiveRecord::Schema.define(version: 2022_01_31_130221) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "completed_flashcards", "flashcards"
+  add_foreign_key "completed_flashcards", "users"
   add_foreign_key "flashcards", "stacks"
   add_foreign_key "stacks", "users"
 end

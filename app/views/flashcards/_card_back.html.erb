@@ -1,0 +1,24 @@
+<div>
+  <p><%= flashcard.question %></p>
+
+  <% case flashcard.type %>
+    <% when 'MultipleChoice' %>
+      <ul>
+        <li class='<%= 'correct' if flashcard.option1_correct %>'><%= flashcard.option1 %></li>
+        <li class='<%= 'correct' if flashcard.option2_correct %>'><%= flashcard.option2 %></li>
+        <li class='<%= 'correct' if flashcard.option3_correct %>'><%= flashcard.option3 %></li>
+        <li class='<%= 'correct' if flashcard.option4_correct %>'><%= flashcard.option4 %></li>
+      </ul>
+    <% when 'SingleChoice' %>
+      <ul>
+        <li class='<%= 'correct' if flashcard.correct_option == 1 %>'><%= flashcard.option1 %></li>
+        <li class='<%= 'correct' if flashcard.correct_option == 2 %>'><%= flashcard.option2 %></li>
+        <li class='<%= 'correct' if flashcard.correct_option == 3 %>'><%= flashcard.option3 %></li>
+        <li class='<%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
+      </ul>
+    <% when 'TrueFalse' %>
+      <h3><%= flashcard.correct %></h3>
+    <% else %>
+      <h3><%= flashcard.answer %></h3>
+  <% end %>
+</div>

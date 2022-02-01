@@ -1,5 +1,6 @@
-<h1><%= @flashcard.stack.title %></h1>
-<h2><%= @flashcard.question %></h2>
+<%= render partial: 'card_front', locals: {flashcard: @flashcard} %>
+<%= render partial: 'card_back', locals: {flashcard: @flashcard} %>
+
 <% if @flashcard.next %>
   <%= link_to 'Next', flashcard_path(@flashcard.next) %>
 <% else %>

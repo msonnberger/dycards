@@ -1,0 +1,25 @@
+<div>
+  <p class='type'><%= flashcard.type %></p>
+  <h2><%= flashcard.question %></h2>
+
+  <% case flashcard.type %>
+    <% when 'MultipleChoice' %>
+      <ul>
+        <li><%= flashcard.option1 %></li>
+        <li><%= flashcard.option2 %></li>
+        <li><%= flashcard.option3 %></li>
+        <li><%= flashcard.option4 %></li>
+      </ul>
+    <% when 'SingleChoice' %>
+      <ul>
+        <li><%= flashcard.option1 %></li>
+        <li><%= flashcard.option2 %></li>
+        <li><%= flashcard.option3 %></li>
+        <li><%= flashcard.option4 %></li>
+      </ul>
+    <% when 'TrueFalse' %>
+      <button>True</button>
+      <button>False</button>
+    <% else %>
+  <% end %>
+</div>
