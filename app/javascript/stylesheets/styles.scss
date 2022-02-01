@@ -1,5 +1,8 @@
 @import './normalize.scss';
 @import './fonts.scss';
+@import './card.scss';
+@import './input.scss';
+@import './button.scss';
 
 :root {
   font-size: 62.5%;
@@ -31,7 +34,14 @@ html {
 
 body {
   font-size: 1.8rem;
-  background: pink;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 h1 {
