@@ -63,10 +63,12 @@ class FlashcardsController < ApplicationController
       multiple_choice_count = stack.flashcards.where(type: 'MultipleChoice').count.to_f
       single_choice_count = stack.flashcards.where(type: 'SingleChoice').count.to_f
       true_false_count = stack.flashcards.where(type: 'TrueFalse').count.to_f
-      @percentages = {}
-      @percentages[:open_answer] = session[:open_answer] / open_answer_count * 100
-      @percentages[:multiple_choice] = session[:multiple_choice] / multiple_choice_count * 100
-      @percentages[:single_choice] = session[:single_choice] / single_choice_count * 100
-      @percentages[:true_false] = session[:true_false] / true_false_count * 100
+
+      @percentages = {
+        open_answer: session[:open_answer] / open_answer_count * 100,
+        multiple_choice: session[:multiple_choice] / multiple_choice_count * 100,
+        single_choice: session[:single_choice] / single_choice_count * 100,
+        true_false: session[:true_false] / true_false_count * 100,
+      }
     end
 end
