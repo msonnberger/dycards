@@ -23,4 +23,11 @@
   <% end %>
   <%= link_to 'Correct', next_card_path(flashcard_params.merge(correct: :true)) %>
   <%= link_to 'Incorrect', next_card_path(flashcard_params.merge(correct: :false)) %>
+  <button>Notizen</button>
+</div>
+
+<div>
+  <h3>Notizen</h3>
+  <p><%= flashcard.notes %></p>
+  <button>Back</button>
 </div>
