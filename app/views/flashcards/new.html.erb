@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div>
+<div id='back'>
   <p class='question'>Frage</p>
   <h3 id='answer' contenteditable='true'>Antwort bearbeiten</h3>
   <div>
@@ -40,8 +40,11 @@
       })
     })
     .then((res) => res.text())
-    .then((path) => {
-      window.location.replace(path);
+    .then((html) => {
+      const content = new DOMParser().parseFromString(html, 'text/html').body.firstChild;
+      const backside = document.getElementById('back');
+      backside.innerHTML = '';
+      backside.appendChild(content);
     })
   }
 

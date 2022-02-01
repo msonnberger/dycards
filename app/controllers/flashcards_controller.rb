@@ -9,11 +9,11 @@ class FlashcardsController < ApplicationController
   end
 
   def create
-    stack = Stack.find(params[:stack_id])
-    @flashcard = stack.flashcards.new(question: params[:question], type: params[:type], answer: params[:answer])
+    @stack = Stack.find(params[:stack_id])
+    @flashcard = @stack.flashcards.new(question: params[:question], type: params[:type], answer: params[:answer])
 
     if @flashcard.save
-      render plain: stack_path(stack)
+      render partial: 'flashcard_created'
     else
       render 'new'
     end
