@@ -21,4 +21,6 @@
     <% else %>
       <h3><%= flashcard.answer %></h3>
   <% end %>
+  <%= link_to 'Correct', next_card_path(flashcard_params.merge(correct: :true)) %>
+  <%= link_to 'Incorrect', next_card_path(flashcard_params.merge(correct: :false)) %>
 </div>
