@@ -9,7 +9,7 @@
 test_user = User.create(username: 'test', password: 'test', password_confirmation: 'test')
 stack = test_user.stacks.create(title: 'Stack 1')
 open_answer = OpenAnswer.create(
-  question: 'Open Question?', 
+  question: 'Open Question?',
   answer: 'Open Question!', stack_id: stack.id
 )
 
