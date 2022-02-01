@@ -27,6 +27,10 @@ class StacksController < ApplicationController
   end
 
   def destroy
+    stack = Stack.find(params[:id])
+    if stack.destroy
+      redirect_to stacks_path
+    end
   end
 
   private
