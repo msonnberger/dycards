@@ -1,2 +1,22 @@
-<h1>Stacks#new</h1>
-<p>Find me in app/views/stacks/new.html.erb</p>
+<h1 id='new-stack-title' contenteditable='true'>Namen eingeben</h1>
+<p>Noch keine Fragen vorhanden.</p>
+<button id='create-stack-btn' onclick="createStack()">Speichern</button>
+
+<script>
+  function createStack() {
+    const title = document.getElementById('new-stack-title').textContent;
+
+    fetch('/stacks', {
+      method: 'POST',
+      body: JSON.stringify({ title }),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      })
+    })
+    .then((res) => res.text())
+    .then((path) => {
+      window.location.replace(path);
+    })
+  }
+</script>

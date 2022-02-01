@@ -1,4 +1,8 @@
 <h1><%= @stack.title %></h1>
-<% @flashcards.each do |flashcard| %>
-  <h2><%= flashcard.question %></h2>
+<% if @flashcards.any? %>
+  <% @flashcards.each do |flashcard| %>
+    <h2><%= flashcard.question %></h2>
+  <% end %>
+<% else %>
+  <p>Noch keine Fragen vorhanden.</p>
 <% end %>

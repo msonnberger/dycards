@@ -14,6 +14,13 @@ class StacksController < ApplicationController
   end
 
   def create
+    @stack = current_user.stacks.new(title: params[:title])
+
+    if @stack.save
+      render plain: stack_path(@stack)
+    else
+      render 'new'
+    end
   end
 
   def update

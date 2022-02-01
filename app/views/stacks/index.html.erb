@@ -5,6 +5,8 @@
     <h2><%= stack.title %></h2>
     <h3><%= stack.flashcards.count %> <span>Karten</span></h3>
     <%= link_to 'Anzeigen', stack %>
-    <%= link_to 'Lernen', flashcard_path(stack.flashcards.first) %>
+    <%= link_to 'Lernen', flashcard_path(stack.flashcards.first) if stack.flashcards.any? %>
   </div>
 <% end %>
+
+<%= link_to 'Neuer Stapel', new_stack_path %>
