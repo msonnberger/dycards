@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   # resources :users, only: [:show, :edit, :update, :destroy]
 
-  resources :stacks
-  resources :flashcards
+  resources :stacks do
+    resources :flashcards
+  end
+
   get '/flashcards/:id/next', to: 'flashcards#next', as: :next_card
 end

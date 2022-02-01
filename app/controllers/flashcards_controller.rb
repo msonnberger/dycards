@@ -5,9 +5,18 @@ class FlashcardsController < ApplicationController
   end
 
   def new
+    @stack = Stack.find(params[:stack_id])
   end
 
   def create
+    stack = Stack.find(params[:stack_id])
+    @flashcard = stack.flashcards.new(question: params[:question], type: params[:type], answer: params[:answer])
+
+    if @flashcard.save
+      render plain: stack_path(stack)
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -34,7 +43,7 @@ class FlashcardsController < ApplicationController
     session[types[@flashcard.type]] += 1 if params[:correct] == 'true'
 
     if @flashcard.next
-      redirect_to flashcard_path(@flashcard.next)
+      redirect_to stack_flashcard_path(@flashcard.stack, @flashcard.next)
     else
       endscreen_data
       render 'endscreen'
