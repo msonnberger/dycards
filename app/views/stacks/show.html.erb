@@ -1,4 +1,7 @@
 <h1><%= @stack.title %></h1>
+<%= form_with model: @stack, method: :delete do |f| %>
+  <%= f.submit 'Löschen' %>
+<% end %>
 <% if @flashcards.any? %>
   <% @flashcards.each do |flashcard| %>
     <h2><%= flashcard.question %></h2>
