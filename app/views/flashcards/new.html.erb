@@ -15,7 +15,61 @@
 
 <div id='back'>
   <p class='question'>Frage</p>
-  <h3 id='answer' contenteditable='true'>Antwort bearbeiten</h3>
+  <%# only for open answer %>
+  <div class='answers open-answer' id='OpenAnswer'><h3 id='answer' contenteditable='true'>Antwort bearbeiten</h3></div>
+
+  <%# only for multiple choice %>
+  <div class='answers multiple-choice' id='MultipleChoice'>
+    <div>
+      <input type='checkbox' id='option1' name='option1' value='1'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='checkbox' id='option2' name='option2' value='2'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='checkbox' id='option3' name='option3' value='3'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='checkbox' id='option4' name='option4' value='4'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+  </div>
+
+  <%# only for single choice %>
+  <div class='answers single-choice' id='SingleChoice'>
+    <div>
+      <input type='radio' id='option1' name='single-choice' value='1'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='radio' id='option2' name='single-choice' value='2'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='radio' id='option3' name='single-choice' value='3'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+    <div>
+      <input type='radio' id='option4' name='single-choice' value='4'>
+      <label contenteditable='true'>Antwort bearbeiten</label>
+    </div>
+  </div>
+
+  <%# only for true false %>
+  <div class='answers true-false' id='TrueFalse'>
+    <div>
+      <input type='radio' id='true' name='true-false' value='true'>
+      <label for='true'>Wahr</label>
+    </div>
+    <div>
+      <input type='radio' id='false' name='true-false' value='false'>
+      <label for='false'>Falsch</label>
+    </div>
+  </div>
+
   <div>
     <button>Notizen</button>
     <button onclick="createFlashcard()">Fertig</button>
@@ -52,5 +106,17 @@
     const questionText = document.getElementById('question').textContent;
     const backsideQuestion = document.querySelector('p.question');
     backsideQuestion.textContent = questionText;
+    const select = document.getElementById('type-select');
+    const type = select.selectedOptions[0].value;
+
+    const answers = document.querySelectorAll('div.answers');
+
+    Array.from(answers).forEach(answerBlock => {
+      if (type !== answerBlock.id) {
+        answerBlock.classList.add('invisible');
+      } else {
+        answerBlock.classList.remove('invisible');
+      }
+    })
   }
 </script>
