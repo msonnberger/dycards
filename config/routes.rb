@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 
   resources :stacks
   resources :flashcards
-  get '/flashcards/:id/endscreen', to: 'flashcards#endscreen'
+  get '/flashcards/:id/next', to: 'flashcards#next'
 end

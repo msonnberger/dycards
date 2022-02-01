@@ -1,8 +1,5 @@
 <%= render partial: 'card_front', locals: {flashcard: @flashcard} %>
 <%= render partial: 'card_back', locals: {flashcard: @flashcard} %>
 
-<% if @flashcard.next %>
-  <%= link_to 'Next', flashcard_path(@flashcard.next) %>
-<% else %>
-  <%= link_to 'Next', action: 'endscreen' %>
-<% end %>
+
+<%= link_to 'Next', action: 'next' %>
