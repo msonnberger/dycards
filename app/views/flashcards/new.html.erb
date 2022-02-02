@@ -84,6 +84,7 @@
 <script>
   function createFlashcard() {
     const data = getFlashcardData();
+    const question = document.getElementById('question');
     const stackId = question.dataset.stackId;
     
     fetch(`/stacks/${stackId}/flashcards`, {
@@ -142,14 +143,11 @@
         break;
     }
 
-    const question = document.getElementById('question');
-    const stackId = question.dataset.stackId;
     const questionText = question.textContent;
     const notes = document.getElementById('notes-text').textContent;
 
     return {
       question: questionText,
-      stack_id: parseInt(stackId),
       notes: notes,
       type: type,
       ...answer

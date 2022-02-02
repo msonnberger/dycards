@@ -19,6 +19,24 @@ class FlashcardsController < ApplicationController
     end
   end
 
+  def edit
+    @flashcard = Flashcard.find(params[:id])
+  end
+
+  def update
+    @flashcard = Flashcard.find(params[:id])
+    @flashcard.update(new_flashcard_params)
+ 
+    if @flashcard.save
+      render plain: stack_path(@flashcard.stack)
+    else
+      render plain: edit_stack_flashcard_path(@flashcard.stack, @flashcard)
+    end
+  end
+
+  def destroy
+  end
+
   def show
     @flashcard = Flashcard.find(params[:id])
     if @flashcard == @flashcard.stack.flashcards.first
@@ -48,15 +66,6 @@ class FlashcardsController < ApplicationController
       endscreen_data
       render 'endscreen'
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   def flashcard_params
