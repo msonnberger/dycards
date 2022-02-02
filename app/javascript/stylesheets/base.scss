@@ -22,6 +22,12 @@
   --black: #000;
 }
 
+*,
+*:before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Inter-Regular', sans-serif;
 }
