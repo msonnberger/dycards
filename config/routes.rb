@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'stats/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   resources :users, only: [:show, :edit, :update, :destroy]
+  get '/statistics', to: 'stats#index'
 
   resources :stacks do
     resources :flashcards

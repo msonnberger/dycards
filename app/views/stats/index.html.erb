@@ -1,0 +1,16 @@
+<%= render partial: 'shared/header', locals: { title: 'Statistik' } %>
+<p>
+  <% if @stats %>
+    Du hast bereits <span><%= @stats[:total] %></span> Fragen beantwortet.
+
+    <h2>Fragetypen</h2>
+    <ul>
+      <li><%= @stats[:open_answer] %></li>
+      <li><%= @stats[:multiple_choice]%></li>
+      <li><%= @stats[:single_choice] %></li>
+      <li><%= @stats[:true_false] %></li>
+    </ul>
+  <% else %>
+    Du hast noch keine Fragen beantwortet :(
+  <% end %>
+</p>
