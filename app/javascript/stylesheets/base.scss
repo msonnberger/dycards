@@ -1,0 +1,87 @@
+
+:root {
+  font-size: 62.5%;
+
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
+
+  --orange-500: #ffa360;
+  --orange-400: #fad7a0;
+
+  --green: #82e0aa;
+  --red: #f1948a;
+  --blue: #aed6f1;
+  --white: #fff;
+  --black: #000;
+}
+
+html {
+  font-family: 'Inter-Regular', sans-serif;
+}
+
+body {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  margin-top: 5rem;
+  max-width: 70rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  font-family: 'Inter-Bold';
+  font-size: 2.5rem;
+  color: var(--indigo-500);
+}
+
+h2 {
+  font-family: 'Inter-Bold';
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-family: 'Inter-Bold';
+  font-size: 2.4rem;
+}
+
+label {
+  font-size: 1.4rem;
+}
+
+.bold {
+  font-family: 'Inter-Bold';
+  font-size: 1.8rem;
+}
+
+.type {
+  font-size: 1.8rem;
+  letter-spacing: 6%;
+  text-transform: uppercase;
+}
+
+.correct {
+  color: var(--green);
+}
+
+.invisible {
+  display: none;
+}
