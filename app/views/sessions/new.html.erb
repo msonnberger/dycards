@@ -7,16 +7,16 @@
   <%= form_with url: login_path, local: true do |f| %>
 
     <div>
-      <%= f.text_field :username %>
+      <%= f.text_field :username, placeholder: 'john' %>
       <%= f.label :username %>
     </div>
 
     <div>
-      <%= f.password_field :password %>
-      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: '**********' %>
+      <%= f.label :password, 'Passwort' %>
     </div>
 
-    <%= submit_tag 'Log In' %>
-    <%= link_to 'Sign Up', signup_path %>
+    <%= submit_tag 'Login', class: 'button primary' %>
+    <%= link_to 'Sign Up', signup_path, class: 'button secondary' %>
   <% end %>
 </div>
