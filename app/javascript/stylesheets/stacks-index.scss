@@ -2,11 +2,43 @@
   header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 2.5rem;
+
+    div {
+      display: flex;
+      svg {
+        stroke: var(--indigo-500);
+      }
+
+      > * {
+        padding: 0 0.25rem;
+      }
+    }
 
     img {
       width: 4rem;
+    }
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    h2 {
+      margin: 0.5rem 0 0 0;
+    }
+
+    .add-button {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      color: var(--black);
+      background-color: var(--indigo-200);
     }
   }
 }
