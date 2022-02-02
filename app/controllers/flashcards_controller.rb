@@ -21,7 +21,7 @@ class FlashcardsController < ApplicationController
 
   def show
     @flashcard = Flashcard.find(params[:id])
-    if !session[:open_answer]
+    if @flashcard == @flashcard.stack.flashcards.first
       session[:open_answer] = 0
       session[:multiple_choice] = 0
       session[:single_choice] = 0
