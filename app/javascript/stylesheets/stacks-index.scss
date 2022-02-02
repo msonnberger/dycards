@@ -8,9 +8,6 @@
 
     div {
       display: flex;
-      svg {
-        stroke: var(--indigo-500);
-      }
 
       > * {
         padding: 0 0.25rem;
@@ -33,12 +30,10 @@
       margin: 0.5rem 0 0 0;
     }
 
-    .add-button {
+    .position-fixed {
       position: fixed;
       bottom: 0;
       right: 0;
-      color: var(--black);
-      background-color: var(--indigo-200);
     }
   }
 }
