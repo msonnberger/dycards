@@ -23,10 +23,10 @@
   }
 
   main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+    gap: 2rem;
+
     margin-top: 2rem;
 
     h2 {
