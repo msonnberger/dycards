@@ -1,0 +1,5 @@
+<%= render partial: 'shared/header', locals: {title: 'Profil'} %>
+<h2>Hallo <%= current_user.username %>!</h2>
+<%= link_to 'Profil bearbeiten', edit_user_path(current_user) %>
+<%= link_to 'Logout', logout_path %>
+<%= link_to 'Profil löschen', user_path(current_user), method: :delete %>

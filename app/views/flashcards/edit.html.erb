@@ -1,4 +1,4 @@
-<%= render partial: 'shared/header', locals: {stack_title: @flashcard.stack.title} %>
+<%= render partial: 'shared/header', locals: {title: @flashcard.stack.title} %>
 <div id='front'>
   <p class='type' data-type='<%= @flashcard.type %>'><%= @flashcard.type %></p>
   <h3 id='question' contenteditable='true' data-stack-id='<%= @flashcard.stack.id %>' data-flashcard-id='<%= @flashcard.id %>'><%= @flashcard.question %></h3>
