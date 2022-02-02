@@ -40,9 +40,9 @@ body {
 }
 
 .content {
-  margin-top: 5rem;
-  padding: 0 2rem;
+  padding: 5rem 2rem 0 2rem;
   width: min(100%, 70rem);
+  min-height: 100vh;
 }
 
 main {
