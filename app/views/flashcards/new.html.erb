@@ -13,6 +13,11 @@
   </div>
 </div>
 
+<div id='notes'>
+  <h3>Notizen</h3>
+  <p id='notes-text' contenteditable='true'>Notizen bearbeiten</p>
+</div>
+
 <div id='back'>
   <p class='question'>Frage</p>
   <%# only for open answer %>
@@ -21,40 +26,40 @@
   <%# only for multiple choice %>
   <div class='answers multiple-choice' id='MultipleChoice'>
     <div>
-      <input type='checkbox' id='option1' name='option1' value='1'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='checkbox' id='mc-option1-correct' name='option1' value='1'>
+      <label contenteditable='true' id='mc-option1'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='checkbox' id='option2' name='option2' value='2'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='checkbox' id='mc-option2-correct' name='option2' value='2'>
+      <label contenteditable='true' id='mc-option2'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='checkbox' id='option3' name='option3' value='3'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='checkbox' id='mc-option3-correct' name='option3' value='3'>
+      <label contenteditable='true' id='mc-option3'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='checkbox' id='option4' name='option4' value='4'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
+      <label contenteditable='true' id='mc-option4'>Antwort bearbeiten</label>
     </div>
   </div>
 
   <%# only for single choice %>
   <div class='answers single-choice' id='SingleChoice'>
     <div>
-      <input type='radio' id='option1' name='single-choice' value='1'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='radio' id='option1' name='sc-correct' value='1'>
+      <label contenteditable='true' id='sc-option1'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='radio' id='option2' name='single-choice' value='2'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='radio' id='option2' name='sc-correct' value='2'>
+      <label contenteditable='true' id='sc-option2'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='radio' id='option3' name='single-choice' value='3'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='radio' id='option3' name='sc-correct' value='3'>
+      <label contenteditable='true' id='sc-option3'>Antwort bearbeiten</label>
     </div>
     <div>
-      <input type='radio' id='option4' name='single-choice' value='4'>
-      <label contenteditable='true'>Antwort bearbeiten</label>
+      <input type='radio' id='option4' name='sc-correct' value='4'>
+      <label contenteditable='true' id='sc-option4'>Antwort bearbeiten</label>
     </div>
   </div>
 
@@ -78,16 +83,12 @@
 
 <script>
   function createFlashcard() {
-    const question = document.getElementById('question');
-    const select = document.getElementById('type-select');
-    const type = select.selectedOptions[0].value;
+    const data = getFlashcardData();
     const stackId = question.dataset.stackId;
-    const questionText = question.textContent;
-    const answer = document.getElementById('answer').textContent;
-
+    
     fetch(`/stacks/${stackId}/flashcards`, {
       method: 'POST',
-      body: JSON.stringify({ question: questionText, type, answer }),
+      body: JSON.stringify({ flashcard: data }),
       headers: new Headers({
         'Content-Type': 'application/json',
         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -100,6 +101,59 @@
       backside.innerHTML = '';
       backside.appendChild(content);
     })
+  }
+
+  function getFlashcardData() {
+    const select = document.getElementById('type-select');
+    const type = select.selectedOptions[0].value;
+    let answer = {};
+    
+    switch (type) {
+      case 'OpenAnswer':
+        answer = { answer: document.getElementById('answer').textContent };
+        break;
+      case 'MultipleChoice':
+        answer = {
+          option1: document.getElementById('mc-option1').textContent,
+          option2: document.getElementById('mc-option2').textContent,
+          option3: document.getElementById('mc-option3').textContent,
+          option4: document.getElementById('mc-option4').textContent,
+          option1_correct: document.getElementById('mc-option1-correct').checked,
+          option2_correct: document.getElementById('mc-option2-correct').checked,
+          option3_correct: document.getElementById('mc-option3-correct').checked,
+          option4_correct: document.getElementById('mc-option4-correct').checked,
+        }
+        break;
+      case 'SingleChoice':
+        answer = {
+          option1: document.getElementById('sc-option1').textContent,
+          option2: document.getElementById('sc-option2').textContent,
+          option3: document.getElementById('sc-option3').textContent,
+          option4: document.getElementById('sc-option4').textContent,
+          correct_option: parseInt(document.querySelector('input[name="sc-correct"]:checked').value),
+        }
+        break;
+      case 'TrueFalse':
+        answer = {
+          correct: document.querySelector('input[name="true-false"]:checked').value === 'true',
+        }
+        break;
+      default:
+        break;
+    }
+
+    const question = document.getElementById('question');
+    const stackId = question.dataset.stackId;
+    const questionText = question.textContent;
+    const notes = document.getElementById('notes-text').textContent;
+
+    return {
+      question: questionText,
+      stack_id: parseInt(stackId),
+      notes: notes,
+      type: type,
+      ...answer
+    }
   }
 
   function flipCard() {

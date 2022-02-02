@@ -10,7 +10,7 @@ class FlashcardsController < ApplicationController
 
   def create
     @stack = Stack.find(params[:stack_id])
-    @flashcard = @stack.flashcards.new(question: params[:question], type: params[:type], answer: params[:answer])
+    @flashcard = @stack.flashcards.new(new_flashcard_params)
 
     if @flashcard.save
       render partial: 'flashcard_created'
@@ -79,5 +79,25 @@ class FlashcardsController < ApplicationController
         single_choice: session[:single_choice] / single_choice_count * 100,
         true_false: session[:true_false] / true_false_count * 100,
       }
+    end
+
+    def new_flashcard_params
+      params.require(:flashcard).permit(
+        :question,
+        :notes,
+        :type,
+        :answer,
+        :option1,
+        :option2,
+        :option3,
+        :option4,
+        :option1_correct,
+        :option2_correct,
+        :option3_correct,
+        :option4_correct,
+        :correct_option,
+        :correct,
+        :stack_id
+      )
     end
 end
