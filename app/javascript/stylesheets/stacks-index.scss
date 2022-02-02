@@ -2,11 +2,38 @@
   header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin: 0 1.5rem;
+
+    div {
+      display: flex;
+
+      > * {
+        padding: 0 0.25rem;
+      }
+    }
 
     img {
       width: 4rem;
+    }
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+    gap: 2rem;
+
+    margin-top: 2rem;
+
+    h2 {
+      margin: 0.5rem 0 0 0;
+    }
+
+    .position-fixed {
+      position: fixed;
+      bottom: 0;
+      right: 0;
     }
   }
 }

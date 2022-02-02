@@ -6,6 +6,7 @@
   padding: 1rem 1.5rem;
   border-radius: 1.4rem;
   margin: 1rem;
+  color: var(--black);
   transition: all 200ms ease-in-out;
 }
 
@@ -52,4 +53,8 @@
 
 .button.circle.white {
   background-color: var(--white);
+}
+
+.button.circle.indigo {
+  background-color: var(--indigo-200);
 }
