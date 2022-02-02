@@ -4,6 +4,8 @@
 @import './input.scss';
 @import './button.scss';
 
+@import './login.scss';
+
 :root {
   font-size: 62.5%;
 
@@ -34,6 +36,14 @@ html {
 
 body {
   font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  margin-top: 5rem;
+  max-width: 70rem;
 }
 
 main {
@@ -47,6 +57,7 @@ main {
 h1 {
   font-family: 'Inter-Bold';
   font-size: 2.5rem;
+  color: var(--indigo-500);
 }
 
 h2 {
