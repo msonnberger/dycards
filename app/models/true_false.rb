@@ -1,3 +1,3 @@
 class TrueFalse < Flashcard
-  validates :correct, presence: true
+  validates :correct, inclusion: [true, false]
 end
