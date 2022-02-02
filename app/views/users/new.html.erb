@@ -1,22 +1,26 @@
-<h1>Sign Up</h1>
+<div class='signup'>
+  <header>
+    <h1>Registrieren</h1>
+    <%= image_pack_tag 'logo.svg' %>
+  </header>
 
-<%= form_with model: @user, url: signup_path do |f| %>
+  <%= form_with model: @user, url: signup_path do |f| %>
+    <div>
+      <%= f.text_field :username, placeholder: 'john' %>
+      <%= f.label :username %>
+    </div>
 
-  <div>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
+    <div>
+      <%= f.password_field :password, placeholder: '**********' %>
+      <%= f.label :password, 'Passwort' %>
+    </div>
 
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+    <div>
+      <%= f.password_field :password_confirmation, placeholder: '**********' %>
+      <%= f.label :password_confirmation, 'Passwort bestätigen' %>
+    </div>
 
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <%= f.submit 'Sign Up' %>
-  <%= link_to 'Back', :back %>
-<% end %>
+    <%= f.submit 'Sign Up', class: 'button primary' %>
+    <%= link_to 'Zurück', :back, class: 'button secondary' %>
+  <% end %>
+</div>
