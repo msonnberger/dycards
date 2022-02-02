@@ -80,7 +80,7 @@ label {
 
 .type {
   font-size: 1.8rem;
-  letter-spacing: 6%;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
@@ -92,6 +92,7 @@ label {
   display: none;
 }
 
-input[type='submit'] {
+input[type='submit'],
+button {
   cursor: pointer;
 }
