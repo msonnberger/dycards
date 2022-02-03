@@ -36,6 +36,10 @@
       animation: progressBar 1.5s ease-out;
     }
   }
+
+  label {
+    margin-left: 0.5rem;
+  }
 }
 
 @keyframes progressBar {
