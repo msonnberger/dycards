@@ -55,7 +55,13 @@
   }
 
   function flipCard() {
-    document.querySelector('.card-wrapper').classList.add('flipped');
+    document.querySelector('.card-wrapper').classList.toggle('flipped');
+  }
+
+  function showNotes() {
+    document.querySelector('.card-front.question').classList.add('invisible');
+    document.getElementById('notes-card').classList.remove('invisible');
+    flipCard();
   }
   
 </script>

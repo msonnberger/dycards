@@ -5,17 +5,17 @@
     <% case flashcard.type %>
       <% when 'MultipleChoice' %>
         <ul>
-          <li class='<%= 'correct' if flashcard.option1_correct %>'><%= flashcard.option1 %></li>
-          <li class='<%= 'correct' if flashcard.option2_correct %>'><%= flashcard.option2 %></li>
-          <li class='<%= 'correct' if flashcard.option3_correct %>'><%= flashcard.option3 %></li>
-          <li class='<%= 'correct' if flashcard.option4_correct %>'><%= flashcard.option4 %></li>
+          <li class='bold <%= 'correct' if flashcard.option1_correct %>'><%= flashcard.option1 %></li>
+          <li class='bold <%= 'correct' if flashcard.option2_correct %>'><%= flashcard.option2 %></li>
+          <li class='bold <%= 'correct' if flashcard.option3_correct %>'><%= flashcard.option3 %></li>
+          <li class='bold <%= 'correct' if flashcard.option4_correct %>'><%= flashcard.option4 %></li>
         </ul>
       <% when 'SingleChoice' %>
         <ul>
-          <li class='<%= 'correct' if flashcard.correct_option == 1 %>'><%= flashcard.option1 %></li>
-          <li class='<%= 'correct' if flashcard.correct_option == 2 %>'><%= flashcard.option2 %></li>
-          <li class='<%= 'correct' if flashcard.correct_option == 3 %>'><%= flashcard.option3 %></li>
-          <li class='<%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
+          <li class='bold <%= 'correct' if flashcard.correct_option == 1 %>'><%= flashcard.option1 %></li>
+          <li class='bold <%= 'correct' if flashcard.correct_option == 2 %>'><%= flashcard.option2 %></li>
+          <li class='bold <%= 'correct' if flashcard.correct_option == 3 %>'><%= flashcard.option3 %></li>
+          <li class='bold <%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
         </ul>
       <% when 'TrueFalse' %>
         <h3><%= flashcard.correct %></h3>
@@ -25,7 +25,7 @@
   </div>
 
   <div class='action-buttons'>
-    <button class='button circle white notes'>
+    <button class='button circle white notes' id='notes-button' onclick='showNotes()'>
       <%= image_pack_tag 'bulb.png' %>
     </button>
 
@@ -37,19 +37,12 @@
       <%= render partial: 'shared/icons/cross' %>
     <% end %>
 
-    <%= link_to '->', next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' %>
-    <%= link_to '->', next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' %>
+    <%= link_to next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' do %>
+      <%= render partial: 'shared/icons/next' %>
+    <% end %>
+
+    <%= link_to next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' do %>
+      <%= render partial: 'shared/icons/next' %>
+    <% end %>
   </div>
 </div>
-
-<%
-=begin%>
- <div class='card-front card indigo' id='notes-button'>
-  <h3>Notizen</h3>
-  <p><%= flashcard.notes %></p>
-  <button>
-    <%= render partial: 'shared/icons/back' %>
-  </button>
-</div>  
-<%
-=end%>
