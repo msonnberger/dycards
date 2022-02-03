@@ -1,7 +1,16 @@
 <div class='profile-screen'>
-  <%= render partial: 'shared/header', locals: { title: 'Profil', color: 'indigo' } %>
+  <header class="stack__edit--header">
+    <%= render partial: 'shared/header', locals: { title: 'Profil', color: 'indigo' } %>
+    <div>
+      <%= link_to logout_path, class: "button circle indigo" do %>
+        <%= render partial: 'shared/icons/logout' %>
+      <% end %>
+      <%= link_to user_path(current_user), method: :delete, class: "button circle indigo" do %>
+        <%= render partial: 'shared/icons/trash' %>
+      <% end %>
+    </div>
+  </header>
+
   <h2>Hallo <%= current_user.username %>!</h2>
   <%= render partial: 'edit' %>
-  <%= link_to 'Logout', logout_path %>
-  <%= link_to 'Profil löschen', user_path(current_user), method: :delete %>
 </div>
