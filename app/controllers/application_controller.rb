@@ -5,5 +5,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def imprint
+  end
+
   helper_method :current_user
 end
