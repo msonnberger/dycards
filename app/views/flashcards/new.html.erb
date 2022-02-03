@@ -109,7 +109,7 @@
     const data = getFlashcardData();
     const question = document.getElementById('question');
     const stackId = question.dataset.stackId;
-    
+
     fetch(`/stacks/${stackId}/flashcards`, {
       method: 'POST',
       body: JSON.stringify({ flashcard: data }),
@@ -131,7 +131,7 @@
     const select = document.getElementById('type-select');
     const type = select.selectedOptions[0].value;
     let answer = {};
-    
+
     switch (type) {
       case 'OpenAnswer':
         answer = { answer: document.getElementById('answer').textContent };

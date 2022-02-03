@@ -10,19 +10,19 @@
   function checkAnswers() {
     const type = document.querySelector('.card-front').dataset.type;
     let result = false;
-    
+
     switch (type) {
       case 'MultipleChoice':
         const option1Checked = document.getElementById('mc-option1-correct').checked;
         const option2Checked = document.getElementById('mc-option2-correct').checked;
         const option3Checked = document.getElementById('mc-option3-correct').checked;
         const option4Checked = document.getElementById('mc-option4-correct').checked;
-      
+
         const option1Correct = document.getElementById('mc-option1').dataset.isCorrect === 'true';
         const option2Correct = document.getElementById('mc-option2').dataset.isCorrect === 'true';
         const option3Correct = document.getElementById('mc-option3').dataset.isCorrect === 'true';
         const option4Correct = document.getElementById('mc-option4').dataset.isCorrect === 'true';
-        
+
         result = option1Checked === option1Correct && option2Checked === option2Correct && option3Checked === option3Correct && option4Checked === option4Correct;
         break;
       case 'SingleChoice':
@@ -43,7 +43,7 @@
         return;
         break;
     }
-    
+
     showButtons([result ? 'next-correct' : 'next-incorrect']);
     flipCard();
   }
@@ -63,5 +63,5 @@
     document.getElementById('notes-card').classList.remove('invisible');
     flipCard();
   }
-  
+
 </script>

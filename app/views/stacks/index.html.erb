@@ -22,7 +22,7 @@
       <% @stacks.each do |stack| %>
         <div class="card indigo stack">
           <h2><%= stack.title %></h2>
-          
+
           <%= link_to stack, class: "edit-link" do %>
             <%= render partial: 'shared/icons/edit' %>
           <% end %>
