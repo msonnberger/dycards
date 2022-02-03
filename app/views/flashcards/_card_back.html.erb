@@ -37,7 +37,12 @@
       <%= render partial: 'shared/icons/cross' %>
     <% end %>
 
-    <%= link_to '->', next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' %>
-    <%= link_to '->', next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' %>
+    <%= link_to next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' do %>
+      <%= render partial: 'shared/icons/next' %>
+    <% end %>
+
+    <%= link_to next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' do %>
+      <%= render partial: 'shared/icons/next' %>
+    <% end %>
   </div>
 </div>
