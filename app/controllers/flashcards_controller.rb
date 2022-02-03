@@ -26,7 +26,7 @@ class FlashcardsController < ApplicationController
   def update
     @flashcard = Flashcard.find(params[:id])
     @flashcard.update(new_flashcard_params)
- 
+
     if @flashcard.save
       render plain: stack_path(@flashcard.stack)
     else

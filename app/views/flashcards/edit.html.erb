@@ -106,7 +106,7 @@
     const question = document.getElementById('question');
     const stackId = question.dataset.stackId;
     const id = question.dataset.flashcardId;
-    
+
     fetch(`/stacks/${stackId}/flashcards/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({ flashcard: data }),
@@ -124,7 +124,7 @@
   function getFlashcardData() {
     const type = document.querySelector('.type').dataset.type;
     let answer = {};
-    
+
     switch (type) {
       case 'OpenAnswer':
         answer = { answer: document.getElementById('answer').textContent };
