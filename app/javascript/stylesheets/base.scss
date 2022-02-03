@@ -82,7 +82,7 @@ label {
 }
 
 .invisible {
-  display: none;
+  display: none !important;
 }
 
 input[type='submit'],

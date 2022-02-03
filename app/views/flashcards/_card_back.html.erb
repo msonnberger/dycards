@@ -23,12 +23,13 @@
   <% end %>
 
   <div class='action-buttons'>
+    <button class='button circle white notes'>N</button>
+
     <%= link_to 'C', next_card_path(flashcard_params.merge(correct: :true)), id: 'open-correct', class: 'invisible button circle green' %>
     <%= link_to 'I', next_card_path(flashcard_params.merge(correct: :false)), id: 'open-incorrect', class: 'invisible button circle red' %>
 
     <%= link_to '->', next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' %>
     <%= link_to '->', next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' %>
-    <button>Notizen</button>
   </div>
 </div>
 

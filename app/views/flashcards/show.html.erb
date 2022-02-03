@@ -39,18 +39,22 @@
         break;
       case 'OpenAnswer':
         showButtons(['open-correct', 'open-incorrect']);
+        flipCard();
         return;
         break;
     }
     
     showButtons([result ? 'next-correct' : 'next-incorrect']);
+    flipCard();
   }
 
   function showButtons(ids) {
     ids.forEach((id) => {
       document.getElementById(id).classList.remove('invisible');
     });
+  }
 
+  function flipCard() {
     document.querySelector('.card-wrapper').classList.add('flipped');
   }
   
