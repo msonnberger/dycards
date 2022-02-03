@@ -33,6 +33,13 @@
       align-items: center;
       height: 3rem;
       border-radius: 1.25rem;
+      animation: progressBar 1.5s ease-out;
     }
+  }
+}
+
+@keyframes progressBar {
+  0% {
+    width: 0;
   }
 }
