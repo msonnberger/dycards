@@ -1,0 +1,33 @@
+.stats {
+  list-style-type: none;
+
+  :nth-child(1) > div > div {
+    background-color: var(--indigo-500);
+  }
+
+  :nth-child(2) > div > div {
+    background-color: var(--indigo-400);
+  }
+
+  :nth-child(3) > div > div {
+    background-color: var(--indigo-300);
+  }
+
+  :nth-child(4) > div > div {
+    background-color: var(--indigo-200);
+  }
+
+  .stats__border {
+    margin: 3rem 0 0.5rem 0;
+    background-color: #f1f1f1;
+    border-radius: 1.25rem;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 3rem;
+      border-radius: 1.25rem;
+    }
+  }
+}
