@@ -1,32 +1,41 @@
 <div class='card-back card indigo answer'>
-  <p><%= flashcard.question %></p>
+  <div>
+    <p><%= flashcard.question %></p>
 
-  <% case flashcard.type %>
-    <% when 'MultipleChoice' %>
-      <ul>
-        <li class='<%= 'correct' if flashcard.option1_correct %>'><%= flashcard.option1 %></li>
-        <li class='<%= 'correct' if flashcard.option2_correct %>'><%= flashcard.option2 %></li>
-        <li class='<%= 'correct' if flashcard.option3_correct %>'><%= flashcard.option3 %></li>
-        <li class='<%= 'correct' if flashcard.option4_correct %>'><%= flashcard.option4 %></li>
-      </ul>
-    <% when 'SingleChoice' %>
-      <ul>
-        <li class='<%= 'correct' if flashcard.correct_option == 1 %>'><%= flashcard.option1 %></li>
-        <li class='<%= 'correct' if flashcard.correct_option == 2 %>'><%= flashcard.option2 %></li>
-        <li class='<%= 'correct' if flashcard.correct_option == 3 %>'><%= flashcard.option3 %></li>
-        <li class='<%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
-      </ul>
-    <% when 'TrueFalse' %>
-      <h3><%= flashcard.correct %></h3>
-    <% else %>
-      <h3><%= flashcard.answer %></h3>
-  <% end %>
+    <% case flashcard.type %>
+      <% when 'MultipleChoice' %>
+        <ul>
+          <li class='<%= 'correct' if flashcard.option1_correct %>'><%= flashcard.option1 %></li>
+          <li class='<%= 'correct' if flashcard.option2_correct %>'><%= flashcard.option2 %></li>
+          <li class='<%= 'correct' if flashcard.option3_correct %>'><%= flashcard.option3 %></li>
+          <li class='<%= 'correct' if flashcard.option4_correct %>'><%= flashcard.option4 %></li>
+        </ul>
+      <% when 'SingleChoice' %>
+        <ul>
+          <li class='<%= 'correct' if flashcard.correct_option == 1 %>'><%= flashcard.option1 %></li>
+          <li class='<%= 'correct' if flashcard.correct_option == 2 %>'><%= flashcard.option2 %></li>
+          <li class='<%= 'correct' if flashcard.correct_option == 3 %>'><%= flashcard.option3 %></li>
+          <li class='<%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
+        </ul>
+      <% when 'TrueFalse' %>
+        <h3><%= flashcard.correct %></h3>
+      <% else %>
+        <h3><%= flashcard.answer %></h3>
+    <% end %>
+  </div>
 
   <div class='action-buttons'>
-    <button class='button circle white notes'>N</button>
+    <button class='button circle white notes'>
+      <%= image_pack_tag 'bulb.png' %>
+    </button>
 
-    <%= link_to 'C', next_card_path(flashcard_params.merge(correct: :true)), id: 'open-correct', class: 'invisible button circle green' %>
-    <%= link_to 'I', next_card_path(flashcard_params.merge(correct: :false)), id: 'open-incorrect', class: 'invisible button circle red' %>
+    <%= link_to next_card_path(flashcard_params.merge(correct: :true)), id: 'open-correct', class: 'invisible button circle green' do %>
+      <%= render partial: 'shared/icons/check' %>
+    <% end %>
+
+    <%= link_to next_card_path(flashcard_params.merge(correct: :false)), id: 'open-incorrect', class: 'invisible button circle red' do %>
+      <%= render partial: 'shared/icons/cross' %>
+    <% end %>
 
     <%= link_to '->', next_card_path(flashcard_params.merge(correct: :true)), id: 'next-correct', class: 'invisible button circle white' %>
     <%= link_to '->', next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' %>
@@ -35,10 +44,12 @@
 
 <%
 =begin%>
- <div class='card-back card indigo notes'>
+ <div class='card-front card indigo' id='notes-button'>
   <h3>Notizen</h3>
   <p><%= flashcard.notes %></p>
-  <button>Back</button>
-</div> 
+  <button>
+    <%= render partial: 'shared/icons/back' %>
+  </button>
+</div>  
 <%
 =end%>

@@ -25,14 +25,11 @@
   width: 100%;
   backface-visibility: hidden;
   margin: auto;
-
-  * {
-    color: var(--white);
-  }
+  color: var(--white);
 
   .button {
     margin: 0;
-    color: var(--indigo-500);
+    color: var(--indigo-900);
     border: none;
   }
 
