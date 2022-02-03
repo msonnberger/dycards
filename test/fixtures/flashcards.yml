@@ -3,11 +3,11 @@
 one:
   question: MyString
   notes: MyString
-  type: 
+  type:
   stack: one
 
 two:
   question: MyString
   notes: MyString
-  type: 
+  type:
   stack: two

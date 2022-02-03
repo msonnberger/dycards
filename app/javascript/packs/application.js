@@ -1,8 +1,8 @@
-import Rails from "@rails/ujs"
+import Rails from '@rails/ujs';
 
-Rails.start()
+Rails.start();
 
 import '../stylesheets/styles.scss';
 import '../js/main.js';
 
-require.context("../images", true);
+require.context('../images', true);
