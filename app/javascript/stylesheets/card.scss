@@ -60,7 +60,7 @@
 
 .card.orange {
   background-color: var(--orange-500);
-  accent-color: var(--orange-400);
+  accent-color: var(--orange-700);
 
   #type-select {
     background-color: transparent;
@@ -73,8 +73,8 @@
     background-color: var(--orange-500);
   }
 
-  .action-buttons {
-    justify-content: space-between;
+  .answers {
+    margin-top: 5rem;
   }
 }
 

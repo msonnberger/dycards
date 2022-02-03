@@ -17,10 +17,7 @@
         <h3 id='question' contenteditable='true' data-stack-id='<%= @stack.id %>'>Frage bearbeiten</h3>
       </div>
       <div class='action-buttons'>
-        <button class='button circle white' id='notes-button' onclick='showNotes()'>
-          <%= image_pack_tag 'bulb.png' %>
-        </button>
-        <button class='button circle white' onclick="flipCard()">
+        <button class='button circle white' onclick="showAnswerSide()">
           <%= render partial: 'shared/icons/turn' %>
         </button>
       </div>
@@ -44,59 +41,59 @@
 
         <%# only for multiple choice %>
         <div class='answers multiple-choice' id='MultipleChoice'>
-          <div>
+          <div class='horizontal-input'>
             <input type='checkbox' id='mc-option1-correct' name='option1' value='1'>
-            <label contenteditable='true' id='mc-option1'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='mc-option1' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='checkbox' id='mc-option2-correct' name='option2' value='2'>
-            <label contenteditable='true' id='mc-option2'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='mc-option2' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='checkbox' id='mc-option3-correct' name='option3' value='3'>
-            <label contenteditable='true' id='mc-option3'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='mc-option3' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
-            <label contenteditable='true' id='mc-option4'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='mc-option4' class='bold'>Antwort bearbeiten</label>
           </div>
         </div>
 
         <%# only for single choice %>
         <div class='answers single-choice' id='SingleChoice'>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='option1' name='sc-correct' value='1'>
-            <label contenteditable='true' id='sc-option1'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='sc-option1' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='option2' name='sc-correct' value='2'>
-            <label contenteditable='true' id='sc-option2'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='sc-option2' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='option3' name='sc-correct' value='3'>
-            <label contenteditable='true' id='sc-option3'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='sc-option3' class='bold'>Antwort bearbeiten</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='option4' name='sc-correct' value='4'>
-            <label contenteditable='true' id='sc-option4'>Antwort bearbeiten</label>
+            <label contenteditable='true' id='sc-option4' class='bold'>Antwort bearbeiten</label>
           </div>
         </div>
 
         <%# only for true false %>
         <div class='answers true-false' id='TrueFalse'>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='true' name='true-false' value='true'>
-            <label for='true'>Wahr</label>
+            <label for='true' class='bold'>Wahr</label>
           </div>
-          <div>
+          <div class='horizontal-input'>
             <input type='radio' id='false' name='true-false' value='false'>
-            <label for='false'>Falsch</label>
+            <label for='false' class='bold'>Falsch</label>
           </div>
         </div>
       </div>
 
       <div class='action-buttons'>
-        <button class='button circle white' id='notes-button' onclick='showNotes()'>
+        <button class='button circle white' id='notes-button-back' onclick='showNotes()'>
           <%= image_pack_tag 'bulb.png' %>
         </button>
         <button class='button circle white' onclick="createFlashcard()">
@@ -180,7 +177,7 @@
     }
   }
 
-  function flipCard() {
+  function showAnswerSide() {
     const questionText = document.getElementById('question').textContent;
     const backsideQuestion = document.querySelector('p.question');
     backsideQuestion.textContent = questionText;
@@ -197,12 +194,17 @@
       }
     });
 
-    document.querySelector('.card-wrapper').classList.toggle('flipped');
+    document.getElementById('notes-card').classList.add('invisible');
+    flipCard()
   }
 
   function showNotes() {
     document.querySelector('.card-front.question').classList.add('invisible');
     document.getElementById('notes-card').classList.remove('invisible');
+    flipCard()
+  }
+
+  function flipCard() {
     document.querySelector('.card-wrapper').classList.toggle('flipped');
   }
 </script>
