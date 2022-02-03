@@ -1,5 +1,10 @@
+.stats__heading {
+  margin-top: 5rem;
+}
+
 .stats {
   list-style-type: none;
+  padding: 0;
 
   :nth-child(1) > div > div {
     background-color: var(--indigo-500);
@@ -28,6 +33,17 @@
       align-items: center;
       height: 3rem;
       border-radius: 1.25rem;
+      animation: progressBar 1.5s ease-out;
     }
+  }
+
+  label {
+    margin-left: 0.5rem;
+  }
+}
+
+@keyframes progressBar {
+  0% {
+    width: 0;
   }
 }

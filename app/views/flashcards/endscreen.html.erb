@@ -1,5 +1,2 @@
-<h1>Statistik</h1>
-<h2><%= @percentages[:open_answer] %>
-<h2><%= @percentages[:multiple_choice] %>
-<h2><%= @percentages[:single_choice] %>
-<h2><%= @percentages[:true_false] %>
+<%= render partial: 'shared/header', locals: { title: 'Statistik' } %>
+<%= render partial: 'shared/stats', locals: { stats: @percentages } %>
