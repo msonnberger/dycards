@@ -67,3 +67,11 @@
     </button>
   </div>
 </div>
+
+<div class='card-front card indigo invisible' id='notes-card'>
+  <h3>Notizen</h3>
+  <p><%= flashcard.notes %></p>
+  <button class='button circle white' onclick='flipCard()'>
+    <%= render partial: 'shared/icons/back' %>
+  </button>
+</div> 

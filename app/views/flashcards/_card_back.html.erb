@@ -25,7 +25,7 @@
   </div>
 
   <div class='action-buttons'>
-    <button class='button circle white notes'>
+    <button class='button circle white notes' id='notes-button' onclick='showNotes()'>
       <%= image_pack_tag 'bulb.png' %>
     </button>
 
@@ -41,15 +41,3 @@
     <%= link_to '->', next_card_path(flashcard_params.merge(correct: :false)), id: 'next-incorrect', class: 'invisible button circle white' %>
   </div>
 </div>
-
-<%
-=begin%>
- <div class='card-front card indigo' id='notes-button'>
-  <h3>Notizen</h3>
-  <p><%= flashcard.notes %></p>
-  <button>
-    <%= render partial: 'shared/icons/back' %>
-  </button>
-</div>  
-<%
-=end%>
