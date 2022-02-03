@@ -70,9 +70,9 @@
   padding-bottom: 1.6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 25rem;
-  max-width: 30rem;
-  min-height: 14rem;
+  width: fill-available;
+  max-width: 35rem;
+  min-height: 15rem;
 
   span {
     font-size: 2rem;
@@ -85,6 +85,7 @@
 
   .edit-link {
     justify-self: end;
+    margin: 0 1rem 0 0;
   }
 
   .play-link {
