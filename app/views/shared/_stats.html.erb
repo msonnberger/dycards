@@ -1,0 +1,27 @@
+<h3 class="stats__heading">Fragetypen</h3>
+<ul class="stats">
+  <li>            
+    <div class="stats__border">
+      <div style="width: <%= stats[:open_answer] %>%"></div>
+    </div>
+      <label>Offene Frage</label>
+  </li>
+  <li>            
+    <div class="stats__border">
+      <div style="width: <%= stats[:multiple_choice] %>%"></div>
+    </div>
+    <label>Multiple Choice</label>
+  </li>
+  <li>            
+    <div class="stats__border">
+      <div style="width: <%= stats[:single_choice] %>%"></div>
+    </div>
+    <label>Single Choice</label>
+  </li>
+  <li>            
+    <div class="stats__border">
+      <div style="width: <%= stats[:true_false] %>%"></div>
+    </div>
+    <label>Wahr / Falsch</label>
+  </li>
+</ul>
