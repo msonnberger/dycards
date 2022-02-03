@@ -61,6 +61,21 @@
 .card.orange {
   background-color: var(--orange-500);
   accent-color: var(--orange-400);
+
+  #type-select {
+    background-color: transparent;
+    text-align: center;
+    border: none;
+    color: var(--white);
+  }
+
+  option {
+    background-color: var(--orange-500);
+  }
+
+  .action-buttons {
+    justify-content: space-between;
+  }
 }
 
 .card.stack {

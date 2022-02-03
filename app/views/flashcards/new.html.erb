@@ -1,83 +1,109 @@
 <%= render partial: 'shared/header', locals: {title: @stack.title} %>
-<div>
-  <select id='type-select'>
-    <option value='OpenAnswer'>Offene Frage</option>
-    <option value='MultipleChoice'>Multiple Choice</option>
-    <option value='SingleChoice'>Single Choice</option>
-    <option value='TrueFalse'>Wahr/Falsch</option>
-  </select>
-  <h3 id='question' contenteditable='true' data-stack-id='<%= @stack.id %>'>Frage bearbeiten</h3>
-  <div>
-    <button>Notizen</button>
-    <button onclick="flipCard()">Umdrehen</button>
-  </div>
-</div>
 
-<div id='notes'>
-  <h3>Notizen</h3>
-  <p id='notes-text' contenteditable='true'>Notizen bearbeiten</p>
-</div>
+<div class='card-wrapper'>
+  <div class='card-inner' spellcheck='false'>
+    <div class='card card-front orange question'>
+      <div>
+        <div class='type-wrapper'>
+          <div class='left'></div>
+          <select id='type-select'>
+            <option value='OpenAnswer'>Offene Frage</option>
+            <option value='MultipleChoice'>Multiple Choice</option>
+            <option value='SingleChoice'>Single Choice</option>
+            <option value='TrueFalse'>Wahr / Falsch</option>
+          </select>
+          <div class='right'></div>
+        </div>
+        <h3 id='question' contenteditable='true' data-stack-id='<%= @stack.id %>'>Frage bearbeiten</h3>
+      </div>
+      <div class='action-buttons'>
+        <button class='button circle white' id='notes-button' onclick='showNotes()'>
+          <%= image_pack_tag 'bulb.png' %>
+        </button>
+        <button class='button circle white' onclick="flipCard()">
+          <%= render partial: 'shared/icons/turn' %>
+        </button>
+      </div>
+    </div>
 
-<div id='back'>
-  <p class='question'>Frage</p>
-  <%# only for open answer %>
-  <div class='answers open-answer' id='OpenAnswer'><h3 id='answer' contenteditable='true'>Antwort bearbeiten</h3></div>
+    <div class='card card-front orange invisible' id='notes-card'>
+      <div>
+        <h3>Notizen</h3>
+        <p id='notes-text' contenteditable='true'>Notizen bearbeiten</p>
+      </div>
+      <button class='button circle white' onclick='flipCard()'>
+        <%= render partial: 'shared/icons/back' %>
+      </button>
+    </div>
 
-  <%# only for multiple choice %>
-  <div class='answers multiple-choice' id='MultipleChoice'>
-    <div>
-      <input type='checkbox' id='mc-option1-correct' name='option1' value='1'>
-      <label contenteditable='true' id='mc-option1'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='checkbox' id='mc-option2-correct' name='option2' value='2'>
-      <label contenteditable='true' id='mc-option2'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='checkbox' id='mc-option3-correct' name='option3' value='3'>
-      <label contenteditable='true' id='mc-option3'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
-      <label contenteditable='true' id='mc-option4'>Antwort bearbeiten</label>
-    </div>
-  </div>
+    <div class='card card-back orange answer' id='back'>
+      <div>
+        <p class='question'>Frage</p>
+        <%# only for open answer %>
+        <div class='answers open-answer' id='OpenAnswer'><h3 id='answer' contenteditable='true'>Antwort bearbeiten</h3></div>
 
-  <%# only for single choice %>
-  <div class='answers single-choice' id='SingleChoice'>
-    <div>
-      <input type='radio' id='option1' name='sc-correct' value='1'>
-      <label contenteditable='true' id='sc-option1'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='radio' id='option2' name='sc-correct' value='2'>
-      <label contenteditable='true' id='sc-option2'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='radio' id='option3' name='sc-correct' value='3'>
-      <label contenteditable='true' id='sc-option3'>Antwort bearbeiten</label>
-    </div>
-    <div>
-      <input type='radio' id='option4' name='sc-correct' value='4'>
-      <label contenteditable='true' id='sc-option4'>Antwort bearbeiten</label>
-    </div>
-  </div>
+        <%# only for multiple choice %>
+        <div class='answers multiple-choice' id='MultipleChoice'>
+          <div>
+            <input type='checkbox' id='mc-option1-correct' name='option1' value='1'>
+            <label contenteditable='true' id='mc-option1'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='checkbox' id='mc-option2-correct' name='option2' value='2'>
+            <label contenteditable='true' id='mc-option2'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='checkbox' id='mc-option3-correct' name='option3' value='3'>
+            <label contenteditable='true' id='mc-option3'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
+            <label contenteditable='true' id='mc-option4'>Antwort bearbeiten</label>
+          </div>
+        </div>
 
-  <%# only for true false %>
-  <div class='answers true-false' id='TrueFalse'>
-    <div>
-      <input type='radio' id='true' name='true-false' value='true'>
-      <label for='true'>Wahr</label>
-    </div>
-    <div>
-      <input type='radio' id='false' name='true-false' value='false'>
-      <label for='false'>Falsch</label>
-    </div>
-  </div>
+        <%# only for single choice %>
+        <div class='answers single-choice' id='SingleChoice'>
+          <div>
+            <input type='radio' id='option1' name='sc-correct' value='1'>
+            <label contenteditable='true' id='sc-option1'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='radio' id='option2' name='sc-correct' value='2'>
+            <label contenteditable='true' id='sc-option2'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='radio' id='option3' name='sc-correct' value='3'>
+            <label contenteditable='true' id='sc-option3'>Antwort bearbeiten</label>
+          </div>
+          <div>
+            <input type='radio' id='option4' name='sc-correct' value='4'>
+            <label contenteditable='true' id='sc-option4'>Antwort bearbeiten</label>
+          </div>
+        </div>
 
-  <div>
-    <button>Notizen</button>
-    <button onclick="createFlashcard()">Fertig</button>
+        <%# only for true false %>
+        <div class='answers true-false' id='TrueFalse'>
+          <div>
+            <input type='radio' id='true' name='true-false' value='true'>
+            <label for='true'>Wahr</label>
+          </div>
+          <div>
+            <input type='radio' id='false' name='true-false' value='false'>
+            <label for='false'>Falsch</label>
+          </div>
+        </div>
+      </div>
+
+      <div class='action-buttons'>
+        <button class='button circle white' id='notes-button' onclick='showNotes()'>
+          <%= image_pack_tag 'bulb.png' %>
+        </button>
+        <button class='button circle white' onclick="createFlashcard()">
+          <%= render partial: 'shared/icons/next' %>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -169,6 +195,14 @@
       } else {
         answerBlock.classList.remove('invisible');
       }
-    })
+    });
+
+    document.querySelector('.card-wrapper').classList.toggle('flipped');
+  }
+
+  function showNotes() {
+    document.querySelector('.card-front.question').classList.add('invisible');
+    document.getElementById('notes-card').classList.remove('invisible');
+    document.querySelector('.card-wrapper').classList.toggle('flipped');
   }
 </script>
