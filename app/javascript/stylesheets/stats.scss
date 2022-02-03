@@ -1,5 +1,6 @@
 .stats {
   list-style-type: none;
+  padding: 0;
 
   :nth-child(1) > div > div {
     background-color: var(--indigo-500);
