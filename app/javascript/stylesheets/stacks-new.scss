@@ -1,0 +1,14 @@
+.stacks-new {
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      align-self: flex-end;
+    }
+
+    h3 {
+      align-self: flex-start;
+    }
+  }
+}
