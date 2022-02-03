@@ -1,81 +1,98 @@
-<%= render partial: 'shared/header', locals: {title: @flashcard.stack.title} %>
-<div id='front'>
-  <p class='type' data-type='<%= @flashcard.type %>'><%= @flashcard.type %></p>
-  <h3 id='question' contenteditable='true' data-stack-id='<%= @flashcard.stack.id %>' data-flashcard-id='<%= @flashcard.id %>'><%= @flashcard.question %></h3>
-  <div>
-    <button>Notizen</button>
-    <button onclick="flipCard()">Umdrehen</button>
-  </div>
-</div>
-
-<div id='notes'>
-  <h3>Notizen</h3>
-  <p id='notes-text' contenteditable='true'><%= @flashcard.notes %></p>
-</div>
-
-<div id='back'>
-  <p class='question'>Frage</p>
-  <% case @flashcard.type %>
-    <% when 'OpenAnswer' %>
-      <div class='answers open-answer' id='OpenAnswer'><h3 id='answer' contenteditable='true'><%= @flashcard.answer %></h3></div>
-
-    <% when 'MultipleChoice' %>
-      <div class='answers multiple-choice' id='MultipleChoice'>
-        <div>
-          <input type='checkbox' id='mc-option1-correct' name='option1' value='1' <%= 'checked' if @flashcard.option1_correct %>>
-          <label contenteditable='true' id='mc-option1'><%= @flashcard.option1 %></label>
-        </div>
-        <div>
-          <input type='checkbox' id='mc-option2-correct' name='option2' value='2' <%= 'checked' if @flashcard.option2_correct %>>
-          <label contenteditable='true' id='mc-option2'><%= @flashcard.option2 %></label>
-        </div>
-        <div>
-          <input type='checkbox' id='mc-option3-correct' name='option3' value='3' <%= 'checked' if @flashcard.option3_correct %>>
-          <label contenteditable='true' id='mc-option3'><%= @flashcard.option3 %></label>
-        </div>
-        <div>
-          <input type='checkbox' id='mc-option4-correct' name='option4' value='4' <%= 'checked' if @flashcard.option4_correct %>>
-          <label contenteditable='true' id='mc-option4'><%= @flashcard.option4 %></label>
-        </div>
+<%= render partial: 'shared/header', locals: { title: @flashcard.stack.title, color: 'orange' } %>
+<div class='card-wrapper'>
+  <div class='card-inner'>
+    <div class='card card-front orange question' id='front'>
+      <div>
+        <p class='type' data-type='<%= @flashcard.type %>'><%= @flashcard.type %></p>
+        <h3 id='question' contenteditable='true' data-stack-id='<%= @flashcard.stack.id %>' data-flashcard-id='<%= @flashcard.id %>'><%= @flashcard.question %></h3>
       </div>
-
-    <% when 'SingleChoice' %>
-      <div class='answers single-choice' id='SingleChoice'>
-        <div>
-          <input type='radio' id='option1' name='sc-correct' value='1' <%= 'checked' if @flashcard.correct_option == 1 %>>
-          <label contenteditable='true' id='sc-option1'><%= @flashcard.option4 %></label>
-        </div>
-        <div>
-          <input type='radio' id='option2' name='sc-correct' value='2' <%= 'checked' if @flashcard.correct_option == 2 %>>
-          <label contenteditable='true' id='sc-option2'><%= @flashcard.option2 %></label>
-        </div>
-        <div>
-          <input type='radio' id='option3' name='sc-correct' value='3' <%= 'checked' if @flashcard.correct_option == 3 %>>
-          <label contenteditable='true' id='sc-option3'><%= @flashcard.option3 %></label>
-        </div>
-        <div>
-          <input type='radio' id='option4' name='sc-correct' value='4' <%= 'checked' if @flashcard.correct_option == 4 %>>
-          <label contenteditable='true' id='sc-option4'><%= @flashcard.option4 %></label>
-        </div>
+      <div class='action-buttons'>
+        <button class='button circle white' onclick="showAnswerSide()">
+          <%= render partial: 'shared/icons/turn' %>
+        </button>
       </div>
+    </div>
 
-    <% when 'TrueFalse' %>
-      <div class='answers true-false' id='TrueFalse'>
-        <div>
-          <input type='radio' id='true' name='true-false' value='true' <%= 'checked' if @flashcard.correct == true %>>
-          <label for='true'>Wahr</label>
-        </div>
-        <div>
-          <input type='radio' id='false' name='true-false' value='false' <%= 'checked' if @flashcard.correct == false %>>
-          <label for='false'>Falsch</label>
-        </div>
+    <div class='card card-front orange invisible' id='notes'>
+      <div>
+        <h3>Notizen</h3>
+        <p id='notes-text' contenteditable='true'><%= @flashcard.notes %></p>
       </div>
-    <% else %>
-  <% end %>
+      <div class='action-buttons'>
+        <button class='button circle white' onclick="flipCard()">
+          <%= render partial: 'shared/icons/back' %>
+        </button>
+      </div>
+    </div>
 
-  <div>
-    <button>Notizen</button>
-    <button onclick="updateFlashcard()">Fertig</button>
+    <div class='card card-back orange answer' id='back'>
+      <div>
+        <p class='question'>Frage</p>
+        <% case @flashcard.type %>
+          <% when 'OpenAnswer' %>
+            <div class='answers open-answer' id='OpenAnswer'><h3 id='answer' contenteditable='true'><%= @flashcard.answer %></h3></div>
+
+          <% when 'MultipleChoice' %>
+            <div class='answers multiple-choice' id='MultipleChoice'>
+              <div>
+                <input type='checkbox' id='mc-option1-correct' name='option1' value='1' <%= 'checked' if @flashcard.option1_correct %>>
+                <label contenteditable='true' id='mc-option1'><%= @flashcard.option1 %></label>
+              </div>
+              <div>
+                <input type='checkbox' id='mc-option2-correct' name='option2' value='2' <%= 'checked' if @flashcard.option2_correct %>>
+                <label contenteditable='true' id='mc-option2'><%= @flashcard.option2 %></label>
+              </div>
+              <div>
+                <input type='checkbox' id='mc-option3-correct' name='option3' value='3' <%= 'checked' if @flashcard.option3_correct %>>
+                <label contenteditable='true' id='mc-option3'><%= @flashcard.option3 %></label>
+              </div>
+              <div>
+                <input type='checkbox' id='mc-option4-correct' name='option4' value='4' <%= 'checked' if @flashcard.option4_correct %>>
+                <label contenteditable='true' id='mc-option4'><%= @flashcard.option4 %></label>
+              </div>
+            </div>
+
+          <% when 'SingleChoice' %>
+            <div class='answers single-choice' id='SingleChoice'>
+              <div>
+                <input type='radio' id='option1' name='sc-correct' value='1' <%= 'checked' if @flashcard.correct_option == 1 %>>
+                <label contenteditable='true' id='sc-option1'><%= @flashcard.option4 %></label>
+              </div>
+              <div>
+                <input type='radio' id='option2' name='sc-correct' value='2' <%= 'checked' if @flashcard.correct_option == 2 %>>
+                <label contenteditable='true' id='sc-option2'><%= @flashcard.option2 %></label>
+              </div>
+              <div>
+                <input type='radio' id='option3' name='sc-correct' value='3' <%= 'checked' if @flashcard.correct_option == 3 %>>
+                <label contenteditable='true' id='sc-option3'><%= @flashcard.option3 %></label>
+              </div>
+              <div>
+                <input type='radio' id='option4' name='sc-correct' value='4' <%= 'checked' if @flashcard.correct_option == 4 %>>
+                <label contenteditable='true' id='sc-option4'><%= @flashcard.option4 %></label>
+              </div>
+            </div>
+
+          <% when 'TrueFalse' %>
+            <div class='answers true-false' id='TrueFalse'>
+              <div>
+                <input type='radio' id='true' name='true-false' value='true' <%= 'checked' if @flashcard.correct == true %>>
+                <label for='true'>Wahr</label>
+              </div>
+              <div>
+                <input type='radio' id='false' name='true-false' value='false' <%= 'checked' if @flashcard.correct == false %>>
+                <label for='false'>Falsch</label>
+              </div>
+            </div>
+          <% else %>
+        <% end %>
+      </div>
+      <div class='action-buttons'>
+        <button class='button circle white' onclick='showNotes()' >
+          <%= image_pack_tag 'bulb.png' %>
+        </button>
+        <button onclick="updateFlashcard()">Fertig</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -149,9 +166,20 @@
     }
   }
 
-  function flipCard() {
+  function showAnswerSide() {
     const questionText = document.getElementById('question').textContent;
     const backsideQuestion = document.querySelector('p.question');
     backsideQuestion.textContent = questionText;
+    flipCard();
+  }
+
+  function showNotes() {
+    document.querySelector('.card-front.question').classList.add('invisible');
+    document.getElementById('notes-card').classList.remove('invisible');
+    flipCard();
+  }
+
+  function flipCard() {
+    document.querySelector('.card-wrapper').classList.toggle('flipped');
   }
 </script>

@@ -1,4 +1,4 @@
-<div>
-  <%= link_to 'Fertig', stack_path(@stack) %>
-  <%= link_to 'Weitere Frage', new_stack_flashcard_path(@stack) %>
+<div class='card-created-buttons'>
+  <%= link_to 'Weitere Frage', new_stack_flashcard_path(@stack), class: 'button primary orange' %>
+  <%= link_to 'Fertig', stack_path(@stack), class: 'button secondary orange' %>
 </div>
