@@ -1,0 +1,19 @@
+.stack__edit--container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+  gap: 2rem;
+
+  .stack__edit--card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0 2rem;
+    margin: auto;
+    border-radius: 2rem;
+    width: stretch;
+    max-width: 35rem;
+    min-height: 10rem;
+    background-color: var(--orange-500);
+    color: var(--white);
+  }
+}

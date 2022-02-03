@@ -125,3 +125,17 @@ ul {
   background-color: var(--indigo-500);
   backface-visibility: hidden;
 }
+
+.position__fixed--bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.indigo {
+  color: var(--indigo-500);
+}
+
+.orange {
+  color: var(--orange-500);
+}

@@ -1,4 +1,4 @@
-<%= render partial: 'shared/header', locals: {title: @flashcard.stack.title} %>
+<%= render partial: 'shared/header', locals: { title: @flashcard.stack.title, color: 'indigo' } %>
 <div class='card-wrapper'>
   <div class='card-inner'>
     <%= render partial: 'card_front', locals: {flashcard: @flashcard} %>

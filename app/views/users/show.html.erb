@@ -1,4 +1,4 @@
-<%= render partial: 'shared/header', locals: {title: 'Profil'} %>
+<%= render partial: 'shared/header', locals: { title: 'Profil', color: 'indigo' } %>
 <h2>Hallo <%= current_user.username %>!</h2>
 <%= link_to 'Profil bearbeiten', edit_user_path(current_user) %>
 <%= link_to 'Logout', logout_path %>

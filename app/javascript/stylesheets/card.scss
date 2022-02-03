@@ -82,12 +82,6 @@
     margin: 0;
   }
 
-  .edit-link {
-    justify-self: end;
-    margin: 0 1rem 0 0;
-    color: var(--white);
-  }
-
   .play-link {
     place-self: end end;
     margin: 0;
@@ -101,6 +95,12 @@
       transform: translateX(2px);
     }
   }
+}
+
+.edit-link {
+  justify-self: end;
+  margin: 0 1rem 0 0;
+  color: var(--white);
 }
 
 .card.question {
