@@ -12,38 +12,38 @@
         <div class='answers multiple-choice' id='MultipleChoice'>
           <div>
             <input type='checkbox' id='mc-option1-correct' name='option1' value='1'>
-            <label id='mc-option1' for='mc-option1-correct' data-is-correct='<%= flashcard.option1_correct %>'><%= flashcard.option1 %></label>
+            <label class='bold' id='mc-option1' for='mc-option1-correct' data-is-correct='<%= flashcard.option1_correct %>'><%= flashcard.option1 %></label>
           </div>
           <div>
             <input type='checkbox' id='mc-option2-correct' name='option2' value='2'>
-            <label id='mc-option2' for='mc-option2-correct' data-is-correct='<%= flashcard.option2_correct %>'><%= flashcard.option2 %></label>
+            <label class='bold' id='mc-option2' for='mc-option2-correct' data-is-correct='<%= flashcard.option2_correct %>'><%= flashcard.option2 %></label>
           </div>
           <div>
             <input type='checkbox' id='mc-option3-correct' name='option3' value='3'>
-            <label id='mc-option3' for='mc-option3-correct' data-is-correct='<%= flashcard.option3_correct %>'><%= flashcard.option3 %></label>
+            <label class='bold' id='mc-option3' for='mc-option3-correct' data-is-correct='<%= flashcard.option3_correct %>'><%= flashcard.option3 %></label>
           </div>
           <div>
             <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
-            <label id='mc-option4' for='mc-option4-correct' data-is-correct='<%= flashcard.option4_correct %>'><%= flashcard.option4 %></label>
+            <label class='bold' id='mc-option4' for='mc-option4-correct' data-is-correct='<%= flashcard.option4_correct %>'><%= flashcard.option4 %></label>
           </div>
         </div>
       <% when 'SingleChoice' %>
         <div class='answers single-choice' id='SingleChoice' data-correct-option='<%= flashcard.correct_option %>'>
           <div>
             <input type='radio' id='sc-option1' name='sc-correct' value='1' checked>
-            <label id='sc-option1' for='sc-option1'><%= flashcard.option1 %></label>
+            <label class='bold' id='sc-option1' for='sc-option1'><%= flashcard.option1 %></label>
           </div>
           <div>
             <input type='radio' id='sc-option2' name='sc-correct' value='2'>
-            <label id='sc-option2' for='sc-option2'><%= flashcard.option2 %></label>
+            <label class='bold' id='sc-option2' for='sc-option2'><%= flashcard.option2 %></label>
           </div>
           <div>
             <input type='radio' id='sc-option3' name='sc-correct' value='3'>
-            <label id='sc-option3' for='sc-option3'><%= flashcard.option3 %></label>
+            <label class='bold' id='sc-option3' for='sc-option3'><%= flashcard.option3 %></label>
           </div>
           <div>
             <input type='radio' id='sc-option4' name='sc-correct' value='4'>
-            <label id='sc-option4' for='sc-option3'><%= flashcard.option4 %></label>
+            <label class='bold' id='sc-option4' for='sc-option3'><%= flashcard.option4 %></label>
           </div>
         </div>
       <% when 'TrueFalse' %>
@@ -69,8 +69,10 @@
 </div>
 
 <div class='card-front card indigo invisible' id='notes-card'>
-  <h3>Notizen</h3>
-  <p><%= flashcard.notes %></p>
+  <div>
+    <h3>Notizen</h3>
+    <p><%= flashcard.notes %></p>
+  </div>
   <button class='button circle white' onclick='flipCard()'>
     <%= render partial: 'shared/icons/back' %>
   </button>

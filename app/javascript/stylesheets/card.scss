@@ -55,10 +55,12 @@
 
 .card.indigo {
   background-color: var(--indigo-400);
+  accent-color: var(--indigo-700);
 }
 
 .card.orange {
   background-color: var(--orange-500);
+  accent-color: var(--orange-400);
 }
 
 .card.stack {
@@ -119,5 +121,45 @@
 .card.answer {
   .action-buttons {
     justify-content: space-between;
+  }
+
+  ul {
+    margin-left: 1.5rem;
+    margin-top: 5rem;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    li::before {
+      content: '';
+      background-color: var(--white);
+      position: absolute;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      left: -10px;
+      top: 2px;
+    }
+
+    li.correct::before {
+      background-color: var(--green);
+    }
+  }
+}
+
+.answers.single-choice div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  input {
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
   }
 }
