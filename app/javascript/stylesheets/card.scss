@@ -92,6 +92,11 @@
     place-self: end end;
     margin: 0;
 
+    &:hover {
+      background-color: var(--indigo-100);
+      border-color: var(--indigo-100);
+    }
+
     svg {
       transform: translateX(2px);
     }
