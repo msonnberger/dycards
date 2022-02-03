@@ -1,13 +1,25 @@
-<h1><%= @stack.title %></h1>
-<%= form_with model: @stack, method: :delete do |f| %>
-  <%= f.submit 'Löschen' %>
-<% end %>
-<% if @flashcards.any? %>
-  <% @flashcards.each do |flashcard| %>
-    <h2><%= flashcard.question %></h2>
-    <%= link_to 'BEARBEITEN', edit_stack_flashcard_path(@stack, flashcard) %>
+<%= render partial: 'shared/header', locals: { title: @stack.title, color: 'orange' } %>
+
+<div class="stack__edit--container">
+  <% if @flashcards.any? %>
+    <% @flashcards.each do |flashcard| %>
+      <div class="stack__edit--card">
+        <h2><%= flashcard.question %></h2>
+        <%= link_to edit_stack_flashcard_path(@stack, flashcard), class: "edit-link" do %>
+          <%= render partial: 'shared/icons/edit' %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Noch keine Fragen vorhanden.</p>
   <% end %>
-<% else %>
-  <p>Noch keine Fragen vorhanden.</p>
-<% end %>
-<%= link_to 'Neue Karte', new_stack_flashcard_path(@stack) %>
+
+  <%= link_to new_stack_flashcard_path(@stack), class: "button circle indigo position__fixed--bottom-right" do %>
+    <%= render partial: 'shared/icons/add' %>
+  <% end %>
+
+  <%= form_with model: @stack, method: :delete do |f| %>
+    <%= f.submit 'Löschen' %>
+  <% end %>
+</div>
+

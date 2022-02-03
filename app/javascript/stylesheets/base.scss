@@ -96,3 +96,49 @@ button {
 ul {
   list-style-position: inside;
 }
+
+[type='checkbox'] {
+  position: relative;
+  -webkit-appearance: none;
+  visibility: hidden;
+}
+
+[type='checkbox'] + label {
+  position: absolute;
+}
+
+[type='checkbox'] + label::before {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 5px;
+  border: 3px solid var(--indigo-500);
+  background-color: var(--white);
+  display: block;
+  content: '';
+  float: left;
+  margin-right: 1rem;
+  z-index: 5;
+  position: relative;
+  top: 1px;
+  backface-visibility: hidden;
+}
+
+[type='checkbox']:checked + label::before {
+  box-shadow: inset 0px 0px 0px 2px var(--white);
+  background-color: var(--indigo-500);
+  backface-visibility: hidden;
+}
+
+.position__fixed--bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.indigo {
+  color: var(--indigo-500);
+}
+
+.orange {
+  color: var(--orange-500);
+}
