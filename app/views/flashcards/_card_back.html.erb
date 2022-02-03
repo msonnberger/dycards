@@ -18,7 +18,7 @@
           <li class='bold <%= 'correct' if flashcard.correct_option == 4 %>'><%= flashcard.option4 %></li>
         </ul>
       <% when 'TrueFalse' %>
-        <h3><%= flashcard.correct %></h3>
+        <h3>Die Aussage ist <%= flashcard.correct ? 'wahr' : 'falsch' %>.</h3>
       <% else %>
         <h3><%= flashcard.answer %></h3>
     <% end %>
