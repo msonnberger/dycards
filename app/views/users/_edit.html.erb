@@ -1,25 +1,23 @@
-<%= render partial: 'shared/header', locals: { title: 'Profil bearbeiten', color: 'indigo' } %>
-
 <%= form_with model: current_user, method: :patch do |f|%>
   <div>
-    <%= f.label :username %>
     <%= f.text_field :username %>
+    <%= f.label :username %>
   </div>
 
   <div>
-    <%= f.label :password %>
     <%= f.password_field :password %>
+    <%= f.label :password, 'Altes Passwort' %>
   </div>
 
   <div>
-    <%= f.label :new_password %>
     <%= f.password_field :new_password %>
+    <%= f.label :new_password, 'Neues Passwort' %>
   </div>
 
   <div>
-    <%= f.label :new_password_confirmation %>
     <%= f.password_field :new_password_confirmation %>
+    <%= f.label :new_password_confirmation, 'Neues Passwort bestätigen' %>
   </div>
 
-  <%= f.submit 'Speichern', data: { disable_with: false } %>
+  <%= f.submit 'Speichern', data: { disable_with: false }, class: 'button primary' %>
 <% end %>
