@@ -1,4 +1,14 @@
-<%= render partial: 'shared/header', locals: { title: @stack.title, color: 'orange' } %>
+<header class="stack__edit--header">
+  <%= render partial: 'shared/header', locals: { title: @stack.title, color: 'orange' } %>
+  <div>
+    <%= form_with model: @stack, method: :delete do |f| %>
+      <%= f.submit 'Löschen' %>
+    <% end %>
+    <%= link_to new_stack_flashcard_path(@stack), class: "button circle indigo position__fixed--bottom-right" do %>
+      <%= render partial: 'shared/icons/add' %>
+    <% end %>
+  </div>
+</header>
 
 <div class="stack__edit--container">
   <% if @flashcards.any? %>
@@ -13,13 +23,4 @@
   <% else %>
     <p>Noch keine Fragen vorhanden.</p>
   <% end %>
-
-  <%= link_to new_stack_flashcard_path(@stack), class: "button circle indigo position__fixed--bottom-right" do %>
-    <%= render partial: 'shared/icons/add' %>
-  <% end %>
-
-  <%= form_with model: @stack, method: :delete do |f| %>
-    <%= f.submit 'Löschen' %>
-  <% end %>
 </div>
-

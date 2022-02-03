@@ -1,3 +1,18 @@
+.stack__edit--header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header__nav {
+    margin: 0 0 1.5rem 0;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .stack__edit--container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
