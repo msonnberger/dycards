@@ -23,9 +23,6 @@ class StacksController < ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
     stack = Stack.find(params[:id])
     if stack.destroy

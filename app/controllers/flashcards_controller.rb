@@ -13,7 +13,7 @@ class FlashcardsController < ApplicationController
     @flashcard = @stack.flashcards.new(new_flashcard_params)
 
     if @flashcard.save
-      render partial: 'flashcard_created'
+      render partial: 'flashcard_created', locals: { stack: @stack }
     else
       render 'new'
     end
@@ -25,9 +25,8 @@ class FlashcardsController < ApplicationController
 
   def update
     @flashcard = Flashcard.find(params[:id])
-    @flashcard.update(new_flashcard_params)
 
-    if @flashcard.save
+    if @flashcard.update(new_flashcard_params)
       render plain: stack_path(@flashcard.stack)
     else
       render plain: edit_stack_flashcard_path(@flashcard.stack, @flashcard)
@@ -50,15 +49,7 @@ class FlashcardsController < ApplicationController
   def next
     @flashcard = Flashcard.find(params[:id])
     current_user.completed_flashcards.create(flashcard_id: @flashcard.id)
-
-    types = {
-      'OpenAnswer' => :open_answer,
-      'MultipleChoice' => :multiple_choice,
-      'SingleChoice' => :single_choice,
-      'TrueFalse' => :true_false
-    }
-
-    session[types[@flashcard.type]] += 1 if params[:correct] == 'true'
+    session[@flashcard.type_symbol] += 1 if params[:correct] == 'true'
 
     if @flashcard.next
       redirect_to stack_flashcard_path(@flashcard.stack, @flashcard.next)

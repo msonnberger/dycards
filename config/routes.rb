@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   get '/statistics', to: 'stats#index'
 
-  resources :stacks do
+  resources :stacks, except: [:edit, :update] do
     resources :flashcards
   end
 
