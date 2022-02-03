@@ -67,7 +67,7 @@
   padding-bottom: 1.6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: fill-available;
+  width: stretch;
   max-width: 35rem;
   min-height: 15rem;
 
@@ -83,6 +83,7 @@
   .edit-link {
     justify-self: end;
     margin: 0 1rem 0 0;
+    color: var(--white);
   }
 
   .play-link {
