@@ -1,7 +1,7 @@
 <%= render partial: 'shared/header', locals: { title: 'Statistik', color: 'indigo' } %>
 
 <% if @stats %>
-  <p>Du hast bereits <span><%= @stats[:total] %></span> Fragen beantwortet.</p>
+  <p>Du hast insgesamt bereits <span><%= @stats[:total] %></span> Fragen beantwortet.</p>
   <%= render partial: 'shared/stats', locals: { stats: @stats } %>
 <% else %>
   <p>Du hast noch keine Fragen beantwortet :(</p>
