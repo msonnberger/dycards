@@ -50,9 +50,10 @@ class FlashcardsController < ApplicationController
     @flashcard = Flashcard.find(params[:id])
     current_user.completed_flashcards.create(flashcard_id: @flashcard.id)
     session[@flashcard.type_symbol] += 1 if params[:correct] == 'true'
+    next_card = @flashcard.next
 
-    if @flashcard.next
-      redirect_to stack_flashcard_path(@flashcard.stack, @flashcard.next)
+    if next_card
+      redirect_to stack_flashcard_path(@flashcard.stack, next_card)
     else
       endscreen_data
       render 'endscreen'
@@ -68,29 +69,27 @@ class FlashcardsController < ApplicationController
   private
     def endscreen_data
       stack = @flashcard.stack
-      open_answer_count = stack.flashcards.where(type: 'OpenAnswer').count.to_f
-      multiple_choice_count = stack.flashcards.where(type: 'MultipleChoice').count.to_f
-      single_choice_count = stack.flashcards.where(type: 'SingleChoice').count.to_f
-      true_false_count = stack.flashcards.where(type: 'TrueFalse').count.to_f
+      counts = stack.flashcards.group(:type).count
+      counts.transform_values!(&:to_f)
 
       open_answer = 0
-      if open_answer_count != 0
-        open_answer = session[:open_answer] / open_answer_count * 100
+      if counts['OpenAnswer'] != 0
+        open_answer = session[:open_answer] / counts['OpenAnswer'] * 100
       end
 
       multiple_choice = 0
-      if multiple_choice_count != 0
-        multiple_choice = session[:multiple_choice] / multiple_choice_count * 100
+      if counts['MultipleChoice'] != 0
+        multiple_choice = session[:multiple_choice] / counts['MultipleChoice'] * 100
       end
 
       single_choice = 0
-      if single_choice_count != 0
-        single_choice = session[:single_choice] / single_choice_count * 100
+      if counts['SingleChoice'] != 0
+        single_choice = session[:single_choice] / counts['SingleChoice'] * 100
       end
 
       true_false = 0
-      if true_false_count != 0
-        true_false = session[:true_false] / true_false_count * 100
+      if counts['TrueFalse'] != 0
+        true_false = session[:true_false] / counts['TrueFalse'] * 100
       end
 
       @percentages = {
