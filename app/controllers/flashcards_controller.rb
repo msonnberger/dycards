@@ -76,22 +76,22 @@ class FlashcardsController < ApplicationController
       counts.transform_values!(&:to_f)
 
       open_answer = 0
-      if counts['OpenAnswer'] != 0
+      unless counts['OpenAnswer'].nil? || counts['OpenAnswer'] == 0
         open_answer = session[:open_answer] / counts['OpenAnswer'] * 100
       end
 
       multiple_choice = 0
-      if counts['MultipleChoice'] != 0
+      unless counts['MultipleChoice'].nil? || counts['MultipleChoice'] == 0
         multiple_choice = session[:multiple_choice] / counts['MultipleChoice'] * 100
       end
 
       single_choice = 0
-      if counts['SingleChoice'] != 0
+      unless counts['SingleChoice'].nil? || counts['SingleChoice'] == 0
         single_choice = session[:single_choice] / counts['SingleChoice'] * 100
       end
 
       true_false = 0
-      if counts['TrueFalse'] != 0
+      unless counts['TrueFalse'].nil? || counts['TrueFalse'] == 0
         true_false = session[:true_false] / counts['TrueFalse'] * 100
       end
 
