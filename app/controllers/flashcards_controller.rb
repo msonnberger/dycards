@@ -15,7 +15,7 @@ class FlashcardsController < ApplicationController
     if @flashcard.save
       render partial: 'flashcard_created', locals: { stack: @stack }
     else
-      render 'new', alert: 'Flashcard konnte nicht erstellt werden.'
+      render partial: 'flashcard_created', locals: { stack: @stack }, alert: 'Flashcard konnte nicht erstellt werden.'
     end
   end
 
