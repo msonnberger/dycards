@@ -172,6 +172,11 @@
   }
 }
 
+.question {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .horizontal-input {
   display: flex;
   align-items: center;

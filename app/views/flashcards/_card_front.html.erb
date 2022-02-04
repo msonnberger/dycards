@@ -5,7 +5,7 @@
       <p class='question-type type'><%= flashcard.type_string %></p>
       <div class='right'></div>
     </div>
-    <h3><%= flashcard.question %></h3>
+    <h3 class="ellipsis"><%= flashcard.question %></h3>
 
     <% case flashcard.type %>
       <% when 'MultipleChoice' %>

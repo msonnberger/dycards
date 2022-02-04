@@ -104,3 +104,8 @@ ul {
 .orange {
   color: var(--orange-500);
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

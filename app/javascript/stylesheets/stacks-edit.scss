@@ -35,5 +35,11 @@
     min-height: 10rem;
     background-color: var(--orange-500);
     color: var(--white);
+
+    h2 {
+      max-width: 85%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 }
