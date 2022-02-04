@@ -181,7 +181,11 @@
     }
 
     const questionText = question.textContent;
-    const notes = document.getElementById('notes-text').textContent;
+    let notes = document.getElementById('notes-text').textContent;
+
+    if (notes === 'Notizen bearbeiten') {
+      notes = 'Keine Notizen vorhanden'
+    }
 
     return {
       question: questionText,
