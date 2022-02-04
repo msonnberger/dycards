@@ -53,6 +53,10 @@
                 <input type='checkbox' id='mc-option4-correct' name='option4' value='4' <%= 'checked' if @flashcard.option4_correct %>>
                 <label contenteditable='true' id='mc-option4' class='bold'><%= @flashcard.option4 %></label>
               </div>
+              <div class='horizontal-input select-hint'>
+                <%= render 'shared/icons/corner' %>
+                <p>Richtige auswählen</p>
+              </div>
             </div>
 
           <% when 'SingleChoice' %>
@@ -72,6 +76,10 @@
               <div class='horizontal-input'>
                 <input type='radio' id='option4' name='sc-correct' value='4' <%= 'checked' if @flashcard.correct_option == 4 %>>
                 <label contenteditable='true' id='sc-option4' class='bold'><%= @flashcard.option4 %></label>
+              </div>
+              <div class='horizontal-input select-hint'>
+                <%= render 'shared/icons/corner' %>
+                <p>Richtiges auswählen</p>
               </div>
             </div>
 
