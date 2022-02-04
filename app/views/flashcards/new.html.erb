@@ -57,6 +57,10 @@
             <input type='checkbox' id='mc-option4-correct' name='option4' value='4'>
             <label contenteditable='true' id='mc-option4' class='bold'>Antwort bearbeiten</label>
           </div>
+          <div class='horizontal-input select-hint'>
+            <%= render 'shared/icons/corner' %>
+            <p>Richtige auswählen</p>
+          </div>
         </div>
 
         <%# only for single choice %>
@@ -76,6 +80,10 @@
           <div class='horizontal-input'>
             <input type='radio' id='option4' name='sc-correct' value='4'>
             <label contenteditable='true' id='sc-option4' class='bold'>Antwort bearbeiten</label>
+          </div>
+          <div class='horizontal-input select-hint'>
+            <%= render 'shared/icons/corner' %>
+            <p>Richtiges auswählen</p>
           </div>
         </div>
 

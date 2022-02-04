@@ -21,7 +21,8 @@
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  min-height: inherit;
+  min-height: 100%;
+  height: 100%;
   width: 100%;
   backface-visibility: hidden;
   margin: auto;
@@ -191,11 +192,22 @@
 }
 
 .card-created-buttons {
-  min-height: inherit;
+  height: 100%;
   width: 100%;
   display: flex;
   gap: 2rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.select-hint {
+  p {
+    margin: 0;
+    margin-left: 0.6rem;
+  }
+
+  svg {
+    transform: translateY(-7px);
+  }
 }
