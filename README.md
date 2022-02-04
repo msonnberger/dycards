@@ -1,24 +1,10 @@
-# README
+# Dycards
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MMP2a by Maximilian Hajek and Martin Sonnberger.
+Live Site: https://dycards.projects.multimediatechnology.at
 
-Things you may want to cover:
+## Development Setup
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- run `yarn install` and `bundle install` to install dependencies.
+- run `rails server` to run local dev server.
+- for hot module reloading, run `./bin/webpack-dev-server`.
