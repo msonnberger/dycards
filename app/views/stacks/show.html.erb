@@ -15,9 +15,14 @@
     <% @flashcards.each do |flashcard| %>
       <div class="stack__edit--card">
         <h2><%= flashcard.question %></h2>
-        <%= link_to edit_stack_flashcard_path(@stack, flashcard), class: "edit-link" do %>
-          <%= render partial: 'shared/icons/edit' %>
-        <% end %>
+        <div>
+          <%= link_to stack_flashcard_path(@stack, flashcard), method: :delete, class: "edit-link" do %>
+            <%= render partial: 'shared/icons/trash' %>
+          <% end %>
+          <%= link_to edit_stack_flashcard_path(@stack, flashcard), class: "edit-link" do %>
+            <%= render partial: 'shared/icons/edit' %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   <% else %>

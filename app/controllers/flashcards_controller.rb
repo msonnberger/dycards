@@ -34,6 +34,9 @@ class FlashcardsController < ApplicationController
   end
 
   def destroy
+    @flashcard = Flashcard.find(params[:id])
+    @flashcard.destroy
+    redirect_to stack_path(@flashcard.stack)
   end
 
   def show
