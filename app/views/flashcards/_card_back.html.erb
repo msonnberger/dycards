@@ -26,7 +26,7 @@
 
   <div class='action-buttons'>
     <button class='button circle white notes' id='notes-button' onclick='showNotes()'>
-      <%= image_pack_tag 'bulb.png' %>
+      <%= image_pack_tag 'bulb.png', alt: 'Notizen' %>
     </button>
 
     <%= link_to next_card_path(flashcard_params.merge(correct: :true)), id: 'open-correct', class: 'invisible button circle green' do %>
