@@ -19,7 +19,7 @@ class StacksController < ApplicationController
     if @stack.save
       render plain: stack_path(@stack)
     else
-      render 'new'
+      render 'new', alert: 'Stapel konnte nicht erstellt werden.'
     end
   end
 

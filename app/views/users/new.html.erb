@@ -4,6 +4,8 @@
     <%= image_pack_tag 'logo.svg' %>
   </header>
 
+  <%= render 'shared/errors' %>
+
   <%= form_with model: @user, url: signup_path do |f| %>
     <div>
       <%= f.text_field :username, placeholder: 'John' %>

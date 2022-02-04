@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to stacks_path
     else
-      redirect_to signup_path, alert: 'Sign Up failed'
+      redirect_to signup_path, alert: 'User konnte nicht erstellt werden.'
     end
   end
 
@@ -30,15 +30,17 @@ class UsersController < ApplicationController
       if current_user.update(username: edit_params[:username])
         redirect_to user_path(current_user)
       else
-        redirect_to edit_user_path(current_user)
+        redirect_to user_path(current_user), alert: 'Username konnte nicht geändert werden.'
       end
     else
       if current_user.authenticate(edit_params[:password])
         if current_user.update(password: edit_params[:new_password], password_confirmation: edit_params[:new_password_confirmation])
           redirect_to user_path(current_user)
         else
-          redirect_to edit_user_path(current_user)
+          redirect_to user_path(current_user), alert: 'Passwort stimmt nicht überein.'
         end
+      else
+        redirect_to user_path(current_user), alert: 'Passwort stimmt nicht überein.'
       end
     end
   end

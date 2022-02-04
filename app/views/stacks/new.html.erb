@@ -2,6 +2,7 @@
   <%= render partial: 'shared/header', locals: { title: 'Neuer Stack', color: 'orange' } %>
 
   <main>
+    <%= render 'shared/errors' %>
     <div class='card orange stack'>
       <h3 id='new-stack-title' contenteditable='true'>Stapelnamen eingeben</h3>
       <button class='button circle white' id='create-stack-btn' onclick="createStack()">

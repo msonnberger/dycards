@@ -1,0 +1,9 @@
+<% if flash.any? %>
+  <ul class='errors'>
+  <% flash.each do |type, msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

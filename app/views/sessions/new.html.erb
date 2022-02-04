@@ -4,6 +4,8 @@
     <%= image_pack_tag 'logo.svg' %>
   </header>
 
+  <%= render 'shared/errors' %>
+
   <%= form_with url: login_path, local: true do |f| %>
 
     <div>

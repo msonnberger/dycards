@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to stacks_path
     else
-      redirect_to root_path, alert: 'Login failed'
+      redirect_to root_path, alert: 'Passwort oder Username stimmen nicht überein.'
     end
   end
 
   def destroy
     reset_session
-    redirect_to root_path, notice: 'Logged out'
+    redirect_to root_path
   end
 
   private

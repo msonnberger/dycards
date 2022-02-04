@@ -15,7 +15,7 @@ class FlashcardsController < ApplicationController
     if @flashcard.save
       render partial: 'flashcard_created', locals: { stack: @stack }
     else
-      render 'new'
+      render 'new', alert: 'Flashcard konnte nicht erstellt werden.'
     end
   end
 
@@ -29,7 +29,7 @@ class FlashcardsController < ApplicationController
     if @flashcard.update(new_flashcard_params)
       render plain: stack_path(@flashcard.stack)
     else
-      render plain: edit_stack_flashcard_path(@flashcard.stack, @flashcard)
+      render plain: edit_stack_flashcard_path(@flashcard.stack, @flashcard), alert: 'Flashcard konnte nicht gespeichert werden'
     end
   end
 
