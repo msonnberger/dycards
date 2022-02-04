@@ -4,7 +4,7 @@
   <main>
     <%= render 'shared/errors' %>
     <div class='card orange stack'>
-      <h3 id='new-stack-title' contenteditable='true'>Stapelnamen eingeben</h3>
+      <h3 id='new-stack-title' contenteditable='true' onclick="clearField()">Stapelnamen eingeben</h3>
       <button class='button circle white' id='create-stack-btn' onclick="createStack()">
         <%= render partial: 'shared/icons/check' %>
       </button>
@@ -13,6 +13,10 @@
 </div>
 
 <script>
+  function clearField() {
+    document.getElementById("new-stack-title").textContent = '';
+  }
+
   function createStack() {
     const title = document.getElementById('new-stack-title').textContent;
 
