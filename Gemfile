@@ -83,3 +83,5 @@ gem 'sprockets-rails', '~> 3.4'
 gem 'bcrypt', '~> 3.1'
 
 gem 'rubocop-rails_config', '~> 1.8'
+
+gem 'rack-mini-profiler', '~> 3.0'
