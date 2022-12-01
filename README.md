@@ -1,7 +1,6 @@
 # Dycards
 
 MMP2a by Maximilian Hajek and Martin Sonnberger.
-Live Site: https://dycards.projects.multimediatechnology.at
 
 ## Development Setup
 
